@@ -22,3 +22,17 @@ export type PaginationParams = {
   page_size?: number;
   [key: string]: any;
 };
+
+export enum FormFieldType {
+  INPUT = "text",
+  PASSWORD = "password",
+  NUMBER = "number",
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phoneInput",
+  CHECKBOX = "checkbox",
+  DATE_PICKER = "datePicker",
+  DATE = "date",
+  SELECT = "select",
+  SKELETON = "skeleton",
+  EMAIL = "email",
+}
