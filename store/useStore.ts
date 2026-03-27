@@ -8,4 +8,5 @@ type State = {
 export const useStore = create<State>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
+
 }));
