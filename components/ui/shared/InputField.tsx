@@ -11,7 +11,7 @@ import {
 } from "react-hook-form";
 import { memo, ReactNode, useState } from "react";
 import Image from "next/image";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Select,
@@ -76,7 +76,7 @@ const InputWrapper = ({
 }) => (
   <div
     className={cn(
-      "border border-[#e5e5e5] dark:border-neutral-800 dark:bg-transparent px-4 rounded-[8px] h-[48px] overflow-hidden flex items-center gap-x-4 focus-within:border-[#10b981] transition-colors duration-200",
+      "input-wrapper bg-[ghostwhite] text-[#616161] px-4 rounded-[8px] h-[48px] overflow-hidden flex items-center gap-x-4 focus-within:border-[#10b981] transition-colors duration-200",
       className,
     )}
   >
@@ -121,7 +121,7 @@ const RenderField = <T extends FieldValues>({
     disabled,
     placeholder,
     className:
-      "w-full h-full bg-transparent text-[#171717] dark:text-white text-[12px] placeholder:text-[#A3A3A3] dark:placeholder:text-neutral-400 placeholder:font-light outline-none",
+      "w-full h-full bg-[var(--color-ghostwhite)] text-[var(--color-text-secondary)] text-[14px] outline-none",
   };
 
   // Handle controlled vs uncontrolled
@@ -147,7 +147,7 @@ const RenderField = <T extends FieldValues>({
     return {
       ...baseProps,
       className:
-        "w-full px-3 py-2 text-[12px] min-h-[9rem] border border-[#f5f5f5] md:border-[#e5e5e5] dark:border-neutral-800 rounded-lg bg-white dark:bg-transparent overflow-y-auto resize-none text-[#404040] dark:text-white placeholder:text-[#a3a3a3] dark:placeholder:text-neutral-400 placeholder:font-normal outline-none focus:border-[#10b981] transition-colors duration-200",
+        "w-full px-3 py-2 text-[12px] min-h-[9rem] border border-input_border dark:border-neutral-800 rounded-[8px] bg-input_bg dark:bg-transparent overflow-y-auto resize-none text-[var(--color-text-dark)] dark:text-white placeholder:text-[var(--color-placeholder)] dark:placeholder:text-neutral-400 placeholder:font-normal outline-none focus:border-[var(--color-success)] transition-colors duration-200",
     };
   };
 
@@ -181,9 +181,9 @@ const RenderField = <T extends FieldValues>({
             className="focus:outline-none"
           >
             {isPasswordVisible ? (
-              <Eye className="text-[#A3A3A3]" size={20} />
+              <Eye className="text-[var(--color-placeholder)]" size={20} />
             ) : (
-              <EyeClosed className="text-[#A3A3A3]" size={20} />
+              <EyeOff className="text-[var(--color-placeholder)]" size={20} />
             )}
           </button>
         </InputWrapper>
@@ -288,7 +288,7 @@ const RenderField = <T extends FieldValues>({
 };
 
 const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
-  const { control, fieldType, label, name, description } = props;
+  const { control, fieldType, label, name, description, className } = props;
 
   if (control) {
     return (
@@ -296,10 +296,10 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
         control={control}
         name={name}
         render={({ field, fieldState }) => (
-          <Field>
+          <Field className={className}>
             {label && (
               <FieldLabel>
-                <span className="text-sm md:text-base capitalize font-[500] text-[#344054] dark:text-white">
+                <span className="field-label text-sm capitalize font-[500]">
                   {label}
                 </span>
               </FieldLabel>
@@ -321,10 +321,10 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
 
   // Uncontrolled component (without react-hook-form)
   return (
-    <Field>
+    <Field className={className}>
       {label && (
         <FieldLabel>
-          <span className="text-sm md:text-base capitalize font-[500] text-[#344054] dark:text-white">
+          <span className="text-sm md:text-base capitalize font-[500] text-[var(--color-heading)] dark:text-white">
             {label}
           </span>
         </FieldLabel>
