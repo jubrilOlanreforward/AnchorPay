@@ -73,12 +73,12 @@ export const BVN_STEPS: Step[] = [
     title: "Setup your login details",
     component: SetupPassword,
   },
-  {
-    id: "verify-email",
-    slug: "verify-email",
-    title: "Verify Your Email Address",
-    component: VerifyEmail,
-  },
+  // {
+  //   id: "verify-email",
+  //   slug: "verify-email",
+  //   title: "Verify Your Email Address",
+  //   component: VerifyEmail,
+  // },
 ];
 
 export const EMAIL_STEPS: Step[] = [

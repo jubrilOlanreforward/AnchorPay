@@ -45,29 +45,26 @@ export default function ExampleForm() {
   };
 
   return (
-    <form
-      onSubmit={form.handleSubmit(onSubmit)}
-      className="space-y-6 max-w-md mx-auto p-6"
-    >
-      <h1 className="text-2xl font-bold">Registration Form</h1>
+    <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6 max-w-md mx-auto p-6'>
+      <h1 className='text-2xl font-montserrat font-bold'>Registration Form</h1>
 
       {/* Text Input Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.INPUT}
-        name="fullName"
-        label="Full Name"
-        placeholder="Enter your full name"
-        description="This will be displayed on your profile"
+        name='fullName'
+        label='Full Name'
+        placeholder='Enter your full name'
+        description='This will be displayed on your profile'
       />
 
       {/* Email Input Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.EMAIL}
-        name="email"
-        label="Email Address"
-        placeholder="your.email@example.com"
+        name='email'
+        label='Email Address'
+        placeholder='your.email@example.com'
         description="We'll never share your email"
       />
 
@@ -75,48 +72,48 @@ export default function ExampleForm() {
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.PASSWORD}
-        name="password"
-        label="Password"
-        placeholder="Enter a strong password"
-        description="Minimum 8 characters"
+        name='password'
+        label='Password'
+        placeholder='Enter a strong password'
+        description='Minimum 8 characters'
       />
 
       {/* Phone Number Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.PHONE_INPUT}
-        name="phoneNumber"
-        label="Phone Number"
-        placeholder="+1 (555) 000-0000"
+        name='phoneNumber'
+        label='Phone Number'
+        placeholder='+1 (555) 000-0000'
       />
 
       {/* Date Input Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.DATE}
-        name="dateOfBirth"
-        label="Date of Birth"
+        name='dateOfBirth'
+        label='Date of Birth'
       />
 
       {/* Number Input Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.NUMBER}
-        name="salary"
-        label="Annual Salary"
-        placeholder="100000"
+        name='salary'
+        label='Annual Salary'
+        placeholder='100000'
         min={0}
         step={1000}
-        description="Used for salary verification"
+        description='Used for salary verification'
       />
 
       {/* Select Example */}
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.SELECT}
-        name="country"
-        label="Country"
-        placeholder="Select your country"
+        name='country'
+        label='Country'
+        placeholder='Select your country'
         options={[
           { label: "United States", value: "us" },
           { label: "United Kingdom", value: "uk" },
@@ -129,17 +126,13 @@ export default function ExampleForm() {
       <CustomFormField
         control={form.control}
         fieldType={FormFieldType.TEXTAREA}
-        name="bio"
-        label="Bio"
-        placeholder="Tell us about yourself..."
-        description="Optional: Share a brief bio"
+        name='bio'
+        label='Bio'
+        placeholder='Tell us about yourself...'
+        description='Optional: Share a brief bio'
       />
 
-      <Button
-        type="submit"
-        disabled={form.formState.isSubmitting}
-        className="w-full"
-      >
+      <Button type='submit' disabled={form.formState.isSubmitting} className='w-full'>
         {form.formState.isSubmitting ? "Submitting..." : "Submit"}
       </Button>
     </form>
@@ -160,8 +153,7 @@ export function UncontrolledFormExample() {
   });
 
   const handleChange =
-    (field: string) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setFormData((prev) => ({
         ...prev,
         [field]: e.target.value,
@@ -174,26 +166,26 @@ export function UncontrolledFormExample() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold">Contact Form</h1>
+    <form onSubmit={handleSubmit} className='space-y-6 max-w-md mx-auto p-6'>
+      <h1 className='text-2xl font-montserrat font-bold'>Contact Form</h1>
 
       {/* Uncontrolled Input (no control prop) */}
       <CustomFormField
         fieldType={FormFieldType.INPUT}
-        name="name"
-        label="Your Name"
-        placeholder="John Doe"
+        name='name'
+        label='Your Name'
+        placeholder='John Doe'
         value={formData.name}
         onChange={handleChange("name")}
-        description="Enter your full name"
+        description='Enter your full name'
       />
 
       {/* Uncontrolled Email */}
       <CustomFormField
         fieldType={FormFieldType.EMAIL}
-        name="email"
-        label="Email"
-        placeholder="john@example.com"
+        name='email'
+        label='Email'
+        placeholder='john@example.com'
         value={formData.email}
         onChange={handleChange("email")}
       />
@@ -201,17 +193,17 @@ export function UncontrolledFormExample() {
       {/* Uncontrolled Textarea */}
       <CustomFormField
         fieldType={FormFieldType.TEXTAREA}
-        name="message"
-        label="Message"
-        placeholder="Your message here..."
+        name='message'
+        label='Message'
+        placeholder='Your message here...'
         value={formData.message}
         onChange={handleChange("message")}
-        description="Maximum 500 characters"
+        description='Maximum 500 characters'
       />
 
       <button
-        type="submit"
-        className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        type='submit'
+        className='w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'
       >
         Send Message
       </button>

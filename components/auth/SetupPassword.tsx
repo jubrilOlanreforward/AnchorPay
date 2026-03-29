@@ -7,6 +7,7 @@ import { CheckCircle } from "lucide-react";
 import CustomFormField from "../ui/shared/InputField";
 import { FormFieldType } from "@/types/types";
 import CustomButton from "../ui/shared/CustomButton";
+import { cn } from "@/lib/utils";
 
 const setupPasswordSchema = z
   .object({
@@ -44,6 +45,10 @@ const SetupPassword = ({ onNext }: { onNext?: () => void }) => {
     onNext?.();
   };
 
+  const checkPasswordCriteria = (condition: boolean) => {
+    return condition ? "text-green-400" : "text-gray-400";
+  };
+
   return (
     <div>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -65,26 +70,32 @@ const SetupPassword = ({ onNext }: { onNext?: () => void }) => {
 
         <div className="space-y-2 mt-4">
           <div
-            className={`flex items-center gap-2 text-sm ${hasMinLength ? "text-success-600" : "text-gray-400"}`}
+            className={cn(
+              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasMinLength)}`,
+            )}
           >
             <CheckCircle
-              className={`w-4 h-4 ${hasMinLength ? "text-success-600" : "text-gray-400"}`}
+              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasMinLength)}`)}
             />
             <span>Minimum of 8 characters</span>
           </div>
           <div
-            className={`flex items-center gap-2 text-sm ${hasUppercase ? "text-success-600" : "text-gray-400"}`}
+            className={cn(
+              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasUppercase)}`,
+            )}
           >
             <CheckCircle
-              className={`w-4 h-4 ${hasUppercase ? "text-success-600" : "text-gray-400"}`}
+              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasUppercase)}`)}
             />
             <span>At least one UPPERCASE character</span>
           </div>
           <div
-            className={`flex items-center gap-2 text-sm ${hasSpecialChar ? "text-success-600" : "text-gray-400"}`}
+            className={cn(
+              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasSpecialChar)}`,
+            )}
           >
             <CheckCircle
-              className={`w-4 h-4 ${hasSpecialChar ? "text-success-600" : "text-gray-400"}`}
+              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasSpecialChar)}`)}
             />
             <span>One special character (e.g: @#%&*?)</span>
           </div>

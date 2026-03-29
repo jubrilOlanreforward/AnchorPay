@@ -35,7 +35,7 @@ export default function AuthLayout({
         {children}
       </div>
       <CustomImage
-        key={isVerifyRoute ? "verify" : "default"} // 👈 forces remount on src change
+        key={isVerifyRoute ? "verify" : "default"}
         src={backgroundImage}
         style="w-full h-full absolute bottom-0 left-0 z-10 md:block hidden h-[694px]"
         imgStyle="object-fill"

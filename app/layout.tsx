@@ -1,12 +1,28 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
+import { Poppins, Montserrat } from "next/font/google";
 import QueryProvider from "@/providers/QueryProvider";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import logoImage from "../public/images/logo.png";
+import Menu from "../public/icons/menu.svg";
+import "./globals.css";
+import "animate.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
+  fallback: ["sans-serif"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  fallback: ["sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -20,8 +36,151 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang='en' className={`${poppins.variable} ${montserrat.variable}  h-full antialiased`}>
+      <body className='min-h-full flex flex-col'>
+        <header className='fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-white to-transparent backdrop-blur-lg'>
+          <nav
+            aria-label='Global'
+            className='max-w-7xl flex items-center justify-between p-6 lg:px-8'
+          >
+            <div className='flex lg:flex-1'>
+              <a href='#' className='-m-1.5 p-1.5'>
+                <span className='sr-only'>Your Company</span>
+                <Image src={logoImage} alt='' className='h-7 w-auto px-5' />
+              </a>
+            </div>
+            <div className='flex lg:hidden'>
+              <button
+                type='button'
+                // command='show-modal'
+                // commandfor='mobile-menu'
+                className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
+              >
+                <span className='sr-only'>Open main menu</span>
+                <Image src={Menu} alt='menu' />
+              </button>
+            </div>
+            <div className='hidden lg:flex lg:gap-x-12'>
+              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+                Loans
+              </a>
+              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+                Savings
+              </a>
+              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+                P2P
+              </a>
+              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+                BNPL
+              </a>
+              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+                FAQ
+              </a>
+            </div>
+            <div className='hidden  lg:flex lg:flex-1 lg:justify-end gap-3'>
+              <Button className='text-sm/6 text-white cursor-pointer bg-button-primary px-6 rounded-sm'>
+                Get Started
+              </Button>
+              <Button className='text-sm/6 font-semibold cursor-pointer bg-accent text-gray-900 px-6'>
+                Log in
+              </Button>
+              {/* <a href='#' className='text-sm/6 font-semibold text-[]'>
+                Log in
+              </a> */}
+            </div>
+          </nav>
+          {/* <el-dialog>
+            <dialog id='mobile-menu' className='backdrop:bg-transparent lg:hidden'>
+              <div tabindex='0' className='fixed inset-0 focus:outline-none'>
+                <el-dialog-panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+                  <div className='flex items-center justify-between'>
+                    <a href='#' className='-m-1.5 p-1.5'>
+                      <span className='sr-only'>Your Company</span>
+                      <img
+                        src='https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600'
+                        alt=''
+                        className='h-8 w-auto'
+                      />
+                    </a>
+                    <button
+                      type='button'
+                      command='close'
+                      commandfor='mobile-menu'
+                      className='-m-2.5 rounded-md p-2.5 text-gray-700'
+                    >
+                      <span className='sr-only'>Close menu</span>
+                      <svg
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='currentColor'
+                        stroke-width='1.5'
+                        data-slot='icon'
+                        aria-hidden='true'
+                        className='size-6'
+                      >
+                        <path
+                          d='M6 18 18 6M6 6l12 12'
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className='mt-6 flow-root'>
+                    <div className='-my-6 divide-y divide-gray-500/10'>
+                      <div className='space-y-2 py-6'>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          Loans
+                        </a>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          Savings
+                        </a>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          P2P
+                        </a>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          BNPL
+                        </a>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          Faq
+                        </a>
+                      </div>
+                      <div className='py-6'>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          Log in
+                        </a>
+                        <a
+                          href='#'
+                          className='-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
+                        >
+                          Log in
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </el-dialog-panel>
+              </div>
+            </dialog>
+          </el-dialog> */}
+        </header>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

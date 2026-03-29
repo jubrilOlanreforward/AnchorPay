@@ -1,3 +1,4 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -5,10 +6,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-button-primary: var(--button-primary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-geist-mono);
+  --font-poppins: var(--font-poppins);
+  --font-montserrat: var(--font-montserrat);
+  --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -25,6 +28,7 @@
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
+  --color-button-light: var(--button-light);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -63,13 +67,20 @@
 }
 
 :root {
+  --button-light: #81b6f7d6;
+  --animation_delay-1ms: 0.1s;
+  --animation_delay-2ms: 0.2s;
+  --animation_delay-3ms: 0.3s;
+  --animation_delay-4ms: 0.4s;
+  --animation_delay-5ms: 0.5s;
+  --button-primary: #1f7aea;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #1f7aea;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -131,6 +142,11 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+[data-input-otp="true"] {
+  width: 100% !important;
+  clip-path: none !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -139,22 +155,6 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-poppins;
   }
-
-  h1 {
-    @apply font-sans;
-  }
-}
-
-.disabled-field .input-wrapper {
-  background-color: var(--color-disabled-bg);
-}
-
-.disabled-field input {
-  background-color: transparent;
-}
-
-.disabled-field .field-label {
-  color: var(--color-disabled-label);
 }
