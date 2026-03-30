@@ -17,11 +17,7 @@ const useGetUserQuery = (id: string) => {
   const query = useGet<ApiResponse<User>>(queryKey, url, option);
 
   return query;
-  // return useQuery<User, AxiosError>({
-  //   queryKey: ["user", id],
-  //   queryFn: () => getUser(id!),
-  //   enabled: !!id,
-  // });
+  
 };
 
 export default useGetUserQuery;
