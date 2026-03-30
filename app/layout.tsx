@@ -7,6 +7,10 @@ import logoImage from "../public/images/logo.png";
 import Menu from "../public/icons/menu.svg";
 import "./globals.css";
 import "animate.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -48,8 +52,8 @@ export default function RootLayout({
             <div className='flex lg:hidden'>
               <button
                 type='button'
-                command='show-modal'
-                commandfor='mobile-menu'
+                // command='show-modal'
+                // commandfor='mobile-menu'
                 className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
               >
                 <span className='sr-only'>Open main menu</span>
