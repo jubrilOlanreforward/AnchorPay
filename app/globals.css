@@ -2,9 +2,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -43,9 +40,23 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-gray_400: #454d56;
+  --color-gray_950: #181818;
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-primary_one_600: #1f7aea;
+  --color-light-primary: #ecf4fd;
+  --color-input_border: #f1f1f1;
+  --color-input_bg: #fafafa;
+  --color-ghostwhite: ghostwhite;
+  --color-text-secondary: #616161;
+  --color-success: #10b981;
+  --color-text-dark: #404040;
+  --color-placeholder: #a3a3a3;
+  --color-heading: #344054;
+  --color-muted-cta: #596574;
+  --color-disabled-label: #9e9e9e;
+  --color-disabled-bg: #f0f0f0;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -129,6 +140,11 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+[data-input-otp="true"] {
+  width: 100% !important;
+  clip-path: none !important;
 }
 
 @layer base {
