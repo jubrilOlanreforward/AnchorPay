@@ -1,16 +1,10 @@
 "use client";
 
 import { ReactNode, useCallback, useState } from "react";
-import { Montserrat } from "next/font/google";
 import { useRouter } from "next/navigation";
 import ActionCard from "./ActionCard";
 import Link from "next/link";
 import { getStartedOptions } from "@/lib/constants/authConstants";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
 
 interface GetStartedOption {
   id: "bvn" | "email";
@@ -43,7 +37,7 @@ const GetStarted = () => {
 
   return (
     <section>
-      <h1 className={`${montserrat.className} text-[24px] font-[600] mb-3`}>
+      <h1 className="font-montserrat text-[24px] font-[600] mb-3">
         Get Started With Booster
       </h1>
       <p className="font-[400] text-[15px] mb-8 tracking-[-0.15%] text-gray_950">

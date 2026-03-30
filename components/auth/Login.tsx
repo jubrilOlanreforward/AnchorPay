@@ -7,16 +7,10 @@ import CustomFormField from "../ui/shared/InputField";
 import { FormFieldType } from "@/types/types";
 import CustomButton from "../ui/shared/CustomButton";
 import Link from "next/link";
-import { Montserrat } from "next/font/google";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(1, "Password is required"),
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -37,9 +31,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className={`${montserrat.className} text-[24px] font-[600] mb-3`}>
-        Welcome !
-      </h1>
+      <h1 className="font-montserrat text-[24px] font-[600] mb-3">Welcome !</h1>
       <p className="text-base text-gray-950 mb-6">{`Let’s log in to your account`}</p>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

@@ -7,18 +7,12 @@ import CustomFormField from "../ui/shared/InputField";
 import { FormFieldType } from "@/types/types";
 import CustomButton from "../ui/shared/CustomButton";
 import Link from "next/dist/client/link";
-import { Montserrat } from "next/font/google";
 
 const forgotPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
 
 const ForgotPassword = () => {
   const form = useForm<ForgotPasswordFormValues>({
@@ -36,7 +30,7 @@ const ForgotPassword = () => {
   return (
     <div>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <h1 className={`${montserrat.className} text-[24px] font-[600] mb-3`}>
+        <h1 className="font-montserrat text-[24px] font-[600] mb-3">
           Change your password
         </h1>
         <CustomFormField

@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import CustomButton from "@/components/ui/shared/CustomButton";

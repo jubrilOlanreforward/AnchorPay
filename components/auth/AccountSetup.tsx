@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { Montserrat } from "next/font/google";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
@@ -10,11 +9,6 @@ import {
   StepComponentProps,
 } from "@/lib/constants/authConstants";
 import { ComponentType } from "react";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
 
 type FlowType = "bvn" | "email";
 
@@ -100,7 +94,7 @@ const AccountSetup = ({ flow }: { flow: FlowType }) => {
               ))}
             </div>
           </div>
-          <h1 className={`${montserrat.className} text-[24px] font-[700] mb-3`}>
+          <h1 className="font-montserrat text-[24px] font-[700] mb-3">
             {currentStep.title}
           </h1>
           <CurrentComponent onNext={handleNext} />
