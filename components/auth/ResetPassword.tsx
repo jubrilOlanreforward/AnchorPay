@@ -38,7 +38,7 @@ const ResetPassword = () => {
   return (
     <div>
       <h1 className="text-2xl font-semibold mb-2">Change Password</h1>
-      <p className="text-sm text-gray-600 mb-6">Enter your new password.</p>
+      <p className="text-[17px] text-gray-600 mb-6">Enter your new password.</p>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <CustomFormField
