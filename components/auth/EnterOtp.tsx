@@ -70,7 +70,7 @@ const EnterOtp = () => {
 
   return (
     <div>
-      <p className="text-sm text-gray-600 mb-6">
+      <p className="text-[17px] text-gray-600 mb-6">
         Enter the OTP sent to cuche.@unionbank.ng
       </p>
 

@@ -76,7 +76,7 @@ const InputWrapper = ({
 }) => (
   <div
     className={cn(
-      "input-wrapper bg-[ghostwhite] text-[#616161] px-4 rounded-[8px] h-[48px] overflow-hidden flex items-center gap-x-4 focus-within:border-[#10b981] transition-colors duration-200",
+      "input-wrapper bg-gray-50 border border-[#F1F1F1] text-[#616161] px-4 rounded-[8px] h-[48px] overflow-hidden flex items-center gap-x-4 focus-within:border-primary transition-colors duration-200",
       className,
     )}
   >
@@ -121,7 +121,7 @@ const RenderField = <T extends FieldValues>({
     disabled,
     placeholder,
     className:
-      "w-full h-full bg-[var(--color-ghostwhite)] text-[var(--color-text-secondary)] text-[14px] outline-none",
+      "w-full h-full bg-gray-50 text-[var(--color-text-secondary)] text-[14px] outline-none",
   };
 
   // Handle controlled vs uncontrolled
