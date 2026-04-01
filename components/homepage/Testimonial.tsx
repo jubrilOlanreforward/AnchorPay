@@ -62,9 +62,9 @@ const Testimonial = () => {
 
   return (
     <section>
-      <div className='max-w-7xl overflow-hidden w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-3 p-2 md:p-14 bg-gradient-to-br from-white to-transparent'>
+      <div className='max-w-7xl overflow-hidden w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center md:place-items-center md:m-auto relative z-3 p-2 md:p-14 bg-gradient-to-br from-white to-transparent'>
         <div className='absolute  w-full h-full bg-primary/30 z-1 blur-3xl rounded-full opacity-40'></div>
-        <div className='relative z-3 gap-4 hidden md:flex md:flex-row'>
+        <div className='relative z-3 gap-4 hidden lg:flex lg:flex-row'>
           <div
             className={`flex flex-col ${TESTIMONIAL_COLUMN_MAX_HEIGHT} flex-wrap justify-center gap-4`}
           >
@@ -93,7 +93,7 @@ const Testimonial = () => {
 
         <div className='wrapper flex flex-col-reverse'>
           <div className='p-2 '>
-            <div className='md:hidden pb-4 relative'>
+            <div className='lg:hidden pb-4 relative'>
               <Swiper
                 modules={[Pagination, A11y]}
                 spaceBetween={16}
