@@ -51,6 +51,9 @@ const SetupPassword = ({ onNext }: { onNext?: () => void }) => {
 
   return (
     <div>
+      <p className="text-[17px] text-gray-600 mb-7">
+        {`Begin your journy on Booster`}
+      </p>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <CustomFormField
           control={form.control}
@@ -71,31 +74,31 @@ const SetupPassword = ({ onNext }: { onNext?: () => void }) => {
         <div className="space-y-2 mt-4">
           <div
             className={cn(
-              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasMinLength)}`,
+              `flex items-center gap-2 text-[12px] ${checkPasswordCriteria(hasMinLength)}`,
             )}
           >
             <CheckCircle
-              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasMinLength)}`)}
+              className={cn(`w-3 h-3 ${checkPasswordCriteria(hasMinLength)}`)}
             />
             <span>Minimum of 8 characters</span>
           </div>
           <div
             className={cn(
-              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasUppercase)}`,
+              `flex items-center gap-2 text-[12px] ${checkPasswordCriteria(hasUppercase)}`,
             )}
           >
             <CheckCircle
-              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasUppercase)}`)}
+              className={cn(`w-3 h-3 ${checkPasswordCriteria(hasUppercase)}`)}
             />
             <span>At least one UPPERCASE character</span>
           </div>
           <div
             className={cn(
-              `flex items-center gap-2 text-sm ${checkPasswordCriteria(hasSpecialChar)}`,
+              `flex items-center gap-2 text-[12px] ${checkPasswordCriteria(hasSpecialChar)}`,
             )}
           >
             <CheckCircle
-              className={cn(`w-4 h-4 ${checkPasswordCriteria(hasSpecialChar)}`)}
+              className={cn(`w-3 h-3 ${checkPasswordCriteria(hasSpecialChar)}`)}
             />
             <span>One special character (e.g: @#%&*?)</span>
           </div>

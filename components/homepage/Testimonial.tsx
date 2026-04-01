@@ -114,18 +114,18 @@ const Testimonial = () => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <button
+              <Button
                 onClick={handlePrev}
                 className='swiper-button-prev-business absolute right-14 bottom-6 z-10 bg-white hover:bg-white/30 rounded-full p-2 transition-all duration-200'
               >
                 <ArrowLeftIcon />
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleNext}
                 className='swiper-button-next-business absolute right-2 bottom-6 z-10 bg-white hover:bg-white/30 rounded-full p-2 transition-all duration-200'
               >
                 <ArrowRightIcon />
-              </button>
+              </Button>
             </div>
           </div>
           <div>

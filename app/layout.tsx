@@ -4,8 +4,6 @@ import QueryProvider from "@/providers/QueryProvider";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./globals.css";
-import "animate.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
