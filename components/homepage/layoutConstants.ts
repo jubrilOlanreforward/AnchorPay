@@ -1,0 +1,9 @@
+export const HERO_PHONE_SIZE = "w-[350px] md:w-[650px]";
+export const CARD_FRAME_HEIGHT = "h-[410px] md:h-[528px]";
+export const PRODUCT_CARD_OVERLAP_OFFSET = "-mt-12 md:-mt-16";
+export const PARTNER_LOGO_DIMENSIONS = { width: 80, height: 40 };
+export const BUTTON_ICON_WIDTHS = { apple: 18, play: 14, card: 16 };
+export const SWIPER_MIN_HEIGHT = "min-h-[250px]";
+export const PRODUCT_OVERLAY_SIZE = "w-[350px] h-[109px]";
+export const SWIPER_CARD_MIN_HEIGHT = "min-h-[184px]";
+export const TESTIMONIAL_COLUMN_MAX_HEIGHT = "max-h-[800px]";

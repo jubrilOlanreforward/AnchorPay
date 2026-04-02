@@ -158,3 +158,21 @@
     @apply font-poppins;
   }
 }
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  top: 85% !important;
+  width: fit-content !important;
+}
+
+.swiper-pagination-bullet {
+  background: #dae9fc !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0e4c9a !important;
+  opacity: 1 !important;
+}
