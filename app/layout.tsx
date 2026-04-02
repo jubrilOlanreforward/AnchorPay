@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins, Montserrat } from "next/font/google";
 import QueryProvider from "@/providers/QueryProvider";
-import "./globals.css";
-import "animate.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./globals.css";
+import "animate.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -31,11 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.variable} ${montserrat.variable}  h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang='en' className={`${poppins.variable} ${montserrat.variable}  h-full antialiased`}>
+      <body className='min-h-full flex flex-col'>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
