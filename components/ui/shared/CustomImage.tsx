@@ -13,6 +13,7 @@ interface ICustomImagePropType {
   loading?: "lazy" | "eager";
   clickFunc?: () => void;
   style: string;
+  sizes?: string;
 }
 
 export const CustomImage: React.FC<ICustomImagePropType> = ({
@@ -52,18 +53,13 @@ export const CustomImage: React.FC<ICustomImagePropType> = ({
         )}
         onClick={clickFunc}
       >
-        <div className="text-gray-400 text-sm text-center p-4">
-          {alt || "No Image"}
-        </div>
+        <div className='text-gray-400 text-sm text-center p-4'>{alt || "No Image"}</div>
       </div>
     );
   }
 
   return (
-    <div
-      className={cn("relative", style, clickFunc && "cursor-pointer")}
-      onClick={clickFunc}
-    >
+    <div className={cn("relative", style, clickFunc && "cursor-pointer")} onClick={clickFunc}>
       <Image
         src={currentSrc}
         alt={alt}
