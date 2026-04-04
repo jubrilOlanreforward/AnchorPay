@@ -21,6 +21,7 @@
     "nextjs-toploader": "^3.9.17",
     "radix-ui": "^1.4.3",
     "react": "19.2.4",
+    "react-circular-progressbar": "^2.2.0",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.72.0",
     "shadcn": "^4.1.0",
