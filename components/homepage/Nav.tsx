@@ -20,7 +20,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-white to-transparent backdrop-blur-lg'>
+    <header className='fixed inset-x-0 top-0 z-50 bg-linear-to-b from-white to-transparent backdrop-blur-lg'>
       <nav className='max-w-7xl flex items-center justify-between p-6 lg:px-8'>
         {/* Logo */}
         <div className='flex lg:flex-1'>
@@ -31,7 +31,12 @@ const Nav = () => {
 
         {/* Mobile Menu Button */}
         <div className='flex lg:hidden'>
-          <button onClick={() => setIsOpen(true)} className='p-2.5 text-gray-700'>
+          <button
+            type='button'
+            title='toggle'
+            onClick={() => setIsOpen(true)}
+            className='p-2.5 text-gray-700'
+          >
             <Image src={Menu} alt='menu' />
           </button>
         </div>
@@ -61,7 +66,7 @@ const Nav = () => {
         <div className='fixed inset-0 z-50 bg-white p-6 lg:hidden h-max min-h-full'>
           <div className='flex items-center  justify-between'>
             <Image src={logoImage} alt='Logo' className='h-7 w-auto' />
-            <button onClick={() => setIsOpen(false)}>
+            <button type='button' title='toggle' onClick={() => setIsOpen(false)}>
               <CloseIcon />
             </button>
           </div>
