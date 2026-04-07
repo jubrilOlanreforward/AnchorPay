@@ -27,7 +27,7 @@ const ProfileField: React.FC<ProfileFieldProps> = ({
     >
       <div className="flex flex-col items-start gap-1">
         <label className="text-sm font-medium text-secondary">{label}</label>
-        <p className="text-base font-medium text-gray-950">{value}</p>
+        <p className="text-[15px] font-medium text-gray-950">{value}</p>
       </div>
       {!disabled && <ChevronRight className="w-5 h-5 text-chevron-inactive" />}
     </button>

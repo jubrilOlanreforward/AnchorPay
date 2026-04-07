@@ -18,8 +18,8 @@ const ProfileComponent = () => {
   return (
     <div className="space-y-8">
       {/* Profile Header */}
-      <div className="flex items-center gap-4 pb-6">
-        <div className="bg-primary-one-600 relative w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
+      <div className="flex items-center gap-4 md:pb-6 pb-0">
+        <div className="bg-primary-one-600 relative md:w-16 md:h-16 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
           <span className="text-2xl font-semibold text-white">
             {profileData.firstName.charAt(0).toUpperCase()}
           </span>
@@ -31,10 +31,10 @@ const ProfileComponent = () => {
           </button>
         </div>
         <div>
-          <h2 className="font-montserrat text-[24px] font-[600] text-neutral-950 mb-2">
+          <h2 className="font-montserrat md:text-[24px] text-[22px] font-[600] text-neutral-950 md:mb-2 mb-0">
             Profile
           </h2>
-          <p className="text-[16px] text-gray-600">
+          <p className="md:text-[16px] text-[15px] text-gray-600">
             Access your profile details
           </p>
         </div>

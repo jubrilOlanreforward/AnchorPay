@@ -14,19 +14,13 @@ const LogoutTrigger: React.FC = () => {
   return (
     <button
       onClick={handleLogout}
-      className="font-[500] p-[10px] rounded-md text-[16px] cursor-pointer flex justify-between items-center text-red-600 hover:text-red-700 transition-colors duration-200"
-      style={{ backgroundColor: "var(--color-logout-bg)" }}
+      className="bg-[var(--color-logout-bg)] font-[500] p-[10px] rounded-md text-[16px] cursor-pointer flex justify-between items-center text-red-600 hover:text-red-700 transition-colors duration-200"
     >
       <div className="flex gap-3 items-center">
-        <div
-          className="w-[40px] h-[40px] rounded-full flex items-center justify-center"
-          style={{
-            backgroundColor: "var(--color-red-light)",
-          }}
-        >
+        <div className="bg-[var(--color-red-light)] w-[40px] h-[40px] rounded-full flex items-center justify-center">
           <LogoutIcon />
         </div>
-        <span>Logout</span>
+        <span className="text-sm">Logout</span>
       </div>
     </button>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { ComponentType } from "react";
 import { cn } from "@/lib/utils";
@@ -24,22 +24,19 @@ const TabTrigger: React.FC<TabTriggerProps> = ({
   return (
     <button
       onClick={() => router.push(route)}
-      className="p-[10px] rounded-md font-[500] text-[16px] cursor-pointer flex justify-between items-center transition-colors duration-200"
-      style={{ backgroundColor: "var(--color-tab-bg)" }}
+      className="bg-[var(--color-tab-bg)] p-[10px] rounded-md font-[500] text-[16px] cursor-pointer flex justify-between items-center transition-colors duration-200"
     >
       <div className="flex gap-3 items-center">
-        <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-light-primary">
+        <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[var(--color-tab-icon-bg)]">
           <IconComponent />
         </div>
-        <span>{title}</span>
+        <span className="text-sm">{title}</span>
       </div>
       <ChevronRight
-        className={cn("transition-colors duration-200")}
-        style={{
-          color: isActive
-            ? "var(--color-tab-chevron-active)"
-            : "var(--color-tab-chevron-inactive)",
-        }}
+        className={cn(
+          "transition-colors duration-200 text-[var(--color-tab-chevron-inactive)] w-4 h-4",
+          isActive && "text-[var(--color-tab-chevron-active)]",
+        )}
       />
     </button>
   );
