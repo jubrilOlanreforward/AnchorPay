@@ -1,5 +1,6 @@
 'use client';
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
 import logoImage from "@/public/images/logo.png";
 import Menu from "@/public/icons/menu.svg";
@@ -18,10 +19,10 @@ export default function LandingLayout({
           className='max-w-7xl flex items-center justify-between p-6 lg:px-8'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
+            <Link href='#' className='-m-1.5 p-1.5'>
               <span className='sr-only'>Your Company</span>
               <Image src={logoImage} alt='' className='h-7 w-auto px-5' />
-            </a>
+            </Link>
           </div>
           <div className='flex lg:hidden'>
             <button
@@ -33,21 +34,21 @@ export default function LandingLayout({
             </button>
           </div>
           <div className='hidden lg:flex lg:gap-x-12'>
-            <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+            <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
               Loans
-            </a>
-            <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+            </Link>
+            <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
               Savings
-            </a>
-            <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+            </Link>
+            <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
               P2P
-            </a>
-            <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+            </Link>
+            <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
               BNPL
-            </a>
-            <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+            </Link>
+            <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
               FAQ
-            </a>
+            </Link>
           </div>
           <div className='hidden  lg:flex lg:flex-1 lg:justify-end gap-3'>
             <Button className='text-sm/6 text-white cursor-pointer bg-button-primary px-6 rounded-sm'>

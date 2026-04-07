@@ -1,5 +1,6 @@
 'use client';
 import DashboardIcon from '@/components/SVGs/dashboardIcon'
+import Link from "next/link";
 import SettingsIcon from '@/components/SVGs/settingsIcon'
 import StoreIcon from '@/components/SVGs/storeIcon'
 import LoansIcon from '@/components/SVGs/loansIcon'
@@ -15,66 +16,77 @@ export default function Sidebar() {
     return (
         <div className="sidebar w-56 h-screen m-0 bg-primary_one_600 py-10 px-5 fixed flex flex-col gap-13.75">
             <LogoIcon />
-            <ul className='flex flex-col gap-[7px]'>
-                <li className="group cursor-pointer w-full h-[48px] hover:bg-white hover:text-[#1F7AEA] rounded-sm flex items-center gap-2 px-4 text-white">
-                    <a href="/dashboard" className="flex items-center gap-[14px] w-full">
-
-                        {/* ICON SWITCH */}
-                        <span className="block group-hover:hidden">
+            <ul className='flex flex-col gap-2'>
+                {/* DASHBOARD */}
+                <li className={`group cursor-pointer w-full h-[48px] rounded-lg flex items-center relative transition-all ${
+                    isActive('/dashboard') ? 'bg-white text-[#1F7AEA] shadow-sm' : 'text-white hover:bg-white/10 hover:text-white'
+                }`}>
+                    {isActive('/dashboard') && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#FFAE43] rounded-r-md"></div>
+                    )}
+                    <Link href="/dashboard" className="flex items-center gap-[14px] w-full px-4">
+                        <span className={isActive('/dashboard') ? 'hidden' : 'block'}>
                             <DashboardIcon fill="#ffffff" />
                         </span>
-
-                        <span className="hidden group-hover:block">
+                        <span className={isActive('/dashboard') ? 'block' : 'hidden'}>
                             <DashboardIcon fill="#1F7AEA" />
                         </span>
-
-                        <p>Dashboard</p>
-                    </a>
+                        <p className="font-semibold text-[15px]">Dashboard</p>
+                    </Link>
                 </li>
-                <li className="group cursor-pointer w-full h-[48px] hover:bg-white hover:text-[#1F7AEA] rounded-sm flex items-center gap-2 px-4 text-white">
-                    <a href="/loans" className="flex items-center gap-[14px] w-full">
-
-                        {/* ICON SWITCH */}
-                        <span className="block group-hover:hidden">
+                
+                {/* LOANS */}
+                <li className={`group cursor-pointer w-full h-[48px] rounded-lg flex items-center relative transition-all ${
+                    isActive('/dashboard/loans') ? 'bg-white text-[#1F7AEA] shadow-sm' : 'text-white hover:bg-white/10 hover:text-white'
+                }`}>
+                    {isActive('/dashboard/loans') && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#FFAE43] rounded-r-md"></div>
+                    )}
+                    <Link href="/dashboard/loans" className="flex items-center gap-[14px] w-full px-4">
+                        <span className={isActive('/dashboard/loans') ? 'hidden' : 'block'}>
                             <LoansIcon fill="#ffffff" />
                         </span>
-
-                        <span className="hidden group-hover:block">
+                        <span className={isActive('/dashboard/loans') ? 'block' : 'hidden'}>
                             <LoansIcon fill="#1F7AEA" />
                         </span>
-
-                        <p>Loans</p>
-                    </a>
+                        <p className="font-semibold text-[15px]">Loans</p>
+                    </Link>
                 </li>
-                <li className="group cursor-pointer w-full h-[48px] hover:bg-white hover:text-[#1F7AEA] rounded-sm flex items-center gap-2 px-4 text-white">
-                    <a href="/store" className="flex items-center gap-[14px] w-full">
 
-                        {/* ICON SWITCH */}
-                        <span className="block group-hover:hidden">
+                {/* STORE */}
+                <li className={`group cursor-pointer w-full h-[48px] rounded-lg flex items-center relative transition-all ${
+                    isActive('/store') ? 'bg-white text-[#1F7AEA] shadow-sm' : 'text-white hover:bg-white/10 hover:text-white'
+                }`}>
+                    {isActive('/store') && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#FFAE43] rounded-r-md"></div>
+                    )}
+                    <Link href="/store" className="flex items-center gap-[14px] w-full px-4">
+                        <span className={isActive('/store') ? 'hidden' : 'block'}>
                             <StoreIcon fill="#ffffff" />
                         </span>
-
-                        <span className="hidden group-hover:block">
+                        <span className={isActive('/store') ? 'block' : 'hidden'}>
                             <StoreIcon fill="#1F7AEA" />
                         </span>
-
-                        <p>Store</p>
-                    </a>
+                        <p className="font-semibold text-[15px]">Store</p>
+                    </Link>
                 </li>
-                <li className="group cursor-pointer w-full h-[48px] hover:bg-white hover:text-[#1F7AEA] rounded-sm flex items-center gap-2 px-4 text-white">
-                    <a href="/settings" className="flex items-center gap-[14px] w-full">
 
-                        {/* ICON SWITCH */}
-                        <span className="block group-hover:hidden">
+                {/* SETTINGS */}
+                <li className={`group cursor-pointer w-full h-[48px] rounded-lg flex items-center relative transition-all ${
+                    isActive('/settings') ? 'bg-white text-[#1F7AEA] shadow-sm' : 'text-white hover:bg-white/10 hover:text-white'
+                }`}>
+                    {isActive('/settings') && (
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#FFAE43] rounded-r-md"></div>
+                    )}
+                    <Link href="/settings" className="flex items-center gap-[14px] w-full px-4">
+                        <span className={isActive('/settings') ? 'hidden' : 'block'}>
                             <SettingsIcon fill="#ffffff" />
                         </span>
-
-                        <span className="hidden group-hover:block">
+                        <span className={isActive('/settings') ? 'block' : 'hidden'}>
                             <SettingsIcon fill="#1F7AEA" />
                         </span>
-
-                        <p>Settings</p>
-                    </a>
+                        <p className="font-semibold text-[15px]">Settings</p>
+                    </Link>
                 </li>
             </ul>
         </div>

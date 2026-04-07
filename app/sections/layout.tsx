@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Poppins, Montserrat } from "next/font/google";
 import QueryProvider from "@/providers/QueryProvider";
 import { Button } from "@/components/ui/button";
@@ -44,10 +45,10 @@ export default function RootLayout({
             className='max-w-7xl flex items-center justify-between p-6 lg:px-8'
           >
             <div className='flex lg:flex-1'>
-              <a href='#' className='-m-1.5 p-1.5'>
+              <Link href='#' className='-m-1.5 p-1.5'>
                 <span className='sr-only'>Your Company</span>
                 <Image src={logoImage} alt='' className='h-7 w-auto px-5' />
-              </a>
+              </Link>
             </div>
             <div className='flex lg:hidden'>
               <button
@@ -61,21 +62,21 @@ export default function RootLayout({
               </button>
             </div>
             <div className='hidden lg:flex lg:gap-x-12'>
-              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+              <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
                 Loans
-              </a>
-              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+              </Link>
+              <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
                 Savings
-              </a>
-              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+              </Link>
+              <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
                 P2P
-              </a>
-              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+              </Link>
+              <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
                 BNPL
-              </a>
-              <a href='#' className='text-sm/6 font-semibold text-gray-900'>
+              </Link>
+              <Link href='#' className='text-sm/6 font-semibold text-gray-900'>
                 FAQ
-              </a>
+              </Link>
             </div>
             <div className='hidden  lg:flex lg:flex-1 lg:justify-end gap-3'>
               <Button className='text-sm/6 text-white cursor-pointer bg-button-primary px-6 rounded-sm'>
@@ -84,9 +85,9 @@ export default function RootLayout({
               <Button className='text-sm/6 font-semibold cursor-pointer bg-accent text-gray-900 px-6'>
                 Log in
               </Button>
-              {/* <a href='#' className='text-sm/6 font-semibold text-[]'>
+              {/* <Link href='#' className='text-sm/6 font-semibold text-[]'>
                 Log in
-              </a> */}
+              </Link> */}
             </div>
           </nav>
           {/* <el-dialog>
@@ -94,14 +95,14 @@ export default function RootLayout({
               <div tabindex='0' className='fixed inset-0 focus:outline-none'>
                 <el-dialog-panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
                   <div className='flex items-center justify-between'>
-                    <a href='#' className='-m-1.5 p-1.5'>
+                    <Link href='#' className='-m-1.5 p-1.5'>
                       <span className='sr-only'>Your Company</span>
                       <img
                         src='https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600'
                         alt=''
                         className='h-8 w-auto'
                       />
-                    </a>
+                    </Link>
                     <button
                       type='button'
                       command='close'
@@ -134,31 +135,31 @@ export default function RootLayout({
                           className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           Loans
-                        </a>
+                        </Link>
                         <a
                           href='#'
                           className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           Savings
-                        </a>
+                        </Link>
                         <a
                           href='#'
                           className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           P2P
-                        </a>
+                        </Link>
                         <a
                           href='#'
                           className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           BNPL
-                        </a>
+                        </Link>
                         <a
                           href='#'
                           className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           Faq
-                        </a>
+                        </Link>
                       </div>
                       <div className='py-6'>
                         <a
@@ -166,13 +167,13 @@ export default function RootLayout({
                           className='-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           Log in
-                        </a>
+                        </Link>
                         <a
                           href='#'
                           className='-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
                         >
                           Log in
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
