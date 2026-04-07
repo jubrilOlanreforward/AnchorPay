@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Montserrat } from "next/font/google";
 import QueryProvider from "@/providers/QueryProvider";
+import "./globals.css";
+import "animate.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
