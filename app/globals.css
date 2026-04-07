@@ -176,3 +176,18 @@
   background: #0e4c9a !important;
   opacity: 1 !important;
 }
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  transition: all 400ms ease-in-out;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

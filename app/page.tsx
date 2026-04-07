@@ -9,10 +9,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Experience from "@/components/homepage/Experience";
 import Footer from "@/components/homepage/Footer";
+import ScrollToTop from "@/components/homepage/ScrollToTop";
 export default function Home() {
   return (
     <div className='flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
       <main className='flex flex-1 w-full flex-col'>
+        <ScrollToTop />
         <Nav />
         <Hero />
         <Business_needs />

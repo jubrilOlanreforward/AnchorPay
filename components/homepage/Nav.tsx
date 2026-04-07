@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logoImage from "@/public/Logo 2.png";
@@ -14,100 +17,89 @@ const navItems = [
 ];
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className='fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-white to-transparent backdrop-blur-lg'>
-      <nav aria-label='Global' className='max-w-7xl flex items-center justify-between p-6 lg:px-8'>
+    <header className='fixed inset-x-0 top-0 z-50 bg-linear-to-b from-white to-transparent backdrop-blur-lg'>
+      <nav className='max-w-7xl flex items-center justify-between p-6 lg:px-8'>
+        {/* Logo */}
         <div className='flex lg:flex-1'>
           <Link href='#' className='-m-1.5 p-1.5'>
-            <span className='sr-only'>Your Company</span>
-            <Image src={logoImage} alt='' className='h-7 w-auto px-5' />
+            <Image src={logoImage} alt='Logo' className='h-7 w-auto px-5' />
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
         <div className='flex lg:hidden'>
           <button
             type='button'
-            // @ts-ignore
-            command='show-modal'
-            commandfor='mobile-menu'
-            className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
+            title='toggle'
+            onClick={() => setIsOpen(true)}
+            className='p-2.5 text-gray-700'
           >
-            <span className='sr-only'>Open main menu</span>
             <Image src={Menu} alt='menu' />
           </button>
         </div>
+
+        {/* Desktop Nav */}
         <div className='hidden lg:flex lg:gap-x-12'>
           {navItems.map((item) => (
-            <Link key={item.label} href={item.href} className='text-sm/6 font-semibold text-gray-900'>
+            <Link key={item.label} href={item.href} className='text-sm font-semibold text-gray-900'>
               {item.label}
             </Link>
           ))}
         </div>
-        <div className='hidden  lg:flex lg:flex-1 lg:justify-end gap-3'>
+
+        {/* Desktop Buttons */}
+        <div className='hidden lg:flex lg:flex-1 lg:justify-end gap-3'>
           <Link href='/auth/get-started'>
-            <Button className='text-sm/6 text-white cursor-pointer bg-button-primary px-6 rounded-sm'>
-              Get Started
-            </Button>
+            <Button className='text-white bg-button-primary px-6 rounded-sm'>Get Started</Button>
           </Link>
           <Link href='/auth/login'>
-            <Button className='text-sm/6 font-semibold cursor-pointer bg-accent text-gray-900 px-6'>
-              Log in
-            </Button>
+            <Button className='bg-accent text-gray-900 px-6'>Log in</Button>
           </Link>
         </div>
       </nav>
-      <div>
-        <dialog id='mobile-menu' className='backdrop:bg-transparent lg:hidden'>
-          <div tabIndex={0} className='fixed inset-0 focus:outline-none'>
-            <div className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
-              <div className='flex items-center justify-between'>
-                <Link href='#' className='-m-1.5 p-1.5'>
-                  <span className='sr-only'>Your Company</span>
-                  <Image src={logoImage} alt='' className='h-7 w-auto' />
-                </Link>
-                <button
-                  type='button'
-                  // @ts-ignore
-                  command='close'
-                  commandfor='mobile-menu'
-                  className='-m-2.5 rounded-md p-2.5 text-gray-700 cursor-pointer'
-                >
-                  <span className='sr-only'>Close menu</span>
-                  <CloseIcon />
-                </button>
-              </div>
-              <div className='mt-6 flow-root'>
-                <div className='-my-6 divide-y divide-gray-500/10'>
-                  <div className='space-y-2 py-6'>
-                    {navItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className='-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50'
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className='py-6 space-y-4'>
-                    <Link
-                      href='/auth/login'
-                      className='-mx-3 bg-light-primary block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-primary text-center hover:mt-0.5'
-                    >
-                      Log in
-                    </Link>
-                    <Link
-                      href='/auth/get-started'
-                      className='-mx-3 bg-button-primary text-center block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:mt-0.5'
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className='fixed inset-0 z-50 bg-white p-6 lg:hidden h-max min-h-full'>
+          <div className='flex items-center  justify-between'>
+            <Image src={logoImage} alt='Logo' className='h-7 w-auto' />
+            <button type='button' title='toggle' onClick={() => setIsOpen(false)}>
+              <CloseIcon />
+            </button>
           </div>
-        </dialog>
-      </div>
+
+          <div className='mt-6 space-y-4'>
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className='block text-base font-semibold text-gray-900'
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className='mt-6 space-y-4'>
+            <Link
+              href='/auth/login'
+              className='block bg-light-primary text-primary text-center py-2 rounded-lg'
+            >
+              Log in
+            </Link>
+            <Link
+              href='/auth/get-started'
+              className='block bg-button-primary text-white text-center py-2 rounded-lg'
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
