@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { ComponentType } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface TabTriggerProps {
   title: string;
@@ -18,12 +19,11 @@ const TabTrigger: React.FC<TabTriggerProps> = ({
   route,
   isActive,
 }) => {
-  const router = useRouter();
   const IconComponent = icon as React.ElementType;
 
   return (
-    <button
-      onClick={() => router.push(route)}
+    <Link
+      href={`/dashboard${route}`}
       className="bg-[var(--color-tab-bg)] p-[10px] rounded-md font-[500] text-[16px] cursor-pointer flex justify-between items-center transition-colors duration-200"
     >
       <div className="flex gap-3 items-center">
@@ -38,7 +38,7 @@ const TabTrigger: React.FC<TabTriggerProps> = ({
           isActive && "text-[var(--color-tab-chevron-active)]",
         )}
       />
-    </button>
+    </Link>
   );
 };
 

@@ -55,12 +55,18 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "relative flex w-full md:h-[50px] h-[40px] items-center justify-center border-y border-x border-[var(--color-primary_one_600)] text-sm transition-all outline-none rounded-[10px] aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40",
+        "relative flex max-w-full w-full md:h-[50px] h-[40px] items-center justify-center border-y border-x border-[var(--color-primary_one_600)] text-sm transition-all outline-none rounded-[10px] aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:border-ring data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:border-destructive data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40",
         className,
       )}
       {...props}
     >
-      {char ? <Dot className="w-15 h-15" /> : ""}
+      {char ? (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <Dot className="w-15 h-15" />
+        </div>
+      ) : (
+        ""
+      )}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />

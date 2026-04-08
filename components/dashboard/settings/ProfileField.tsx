@@ -2,24 +2,24 @@
 
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface ProfileFieldProps {
   label: string;
   value: string;
   disabled?: boolean;
-  onEdit?: () => void;
+  linkHref?: string;
 }
 
 const ProfileField: React.FC<ProfileFieldProps> = ({
   label,
   value,
   disabled = false,
-  onEdit,
+  linkHref,
 }) => {
   return (
-    <button
-      onClick={onEdit}
-      disabled={disabled}
+    <Link
+      href={linkHref ?? "#"}
       className={cn(
         "w-full flex items-center justify-between transition-colors duration-200",
         disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer ",
@@ -30,7 +30,7 @@ const ProfileField: React.FC<ProfileFieldProps> = ({
         <p className="text-[15px] font-medium text-gray-950">{value}</p>
       </div>
       {!disabled && <ChevronRight className="w-5 h-5 text-chevron-inactive" />}
-    </button>
+    </Link>
   );
 };
 export default ProfileField;
