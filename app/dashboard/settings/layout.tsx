@@ -18,9 +18,12 @@ export default function SettingsLayout({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const paramsvalue = searchParams.get("param");
+  const paramsValue = searchParams.get("param");
 
-  const metaData = SETTINGS_METADATA.find((meta) => meta.pathname === pathname);
+  const metaData = SETTINGS_METADATA.find((meta) => meta.route === pathname);
+
+  const isActive = (route: string) =>
+    pathname === route || pathname.startsWith(route + "/");
 
   const handleNavigateBack = () => {
     router.back();
@@ -39,7 +42,7 @@ export default function SettingsLayout({
               title={section.title ?? ""}
               icon={section.icon}
               route={section.route}
-              isActive={pathname?.includes(section.route) || false}
+              isActive={isActive(section.route)}
             />
           ))}
         </nav>
@@ -65,7 +68,7 @@ export default function SettingsLayout({
                 {metaData.title}
               </h2>
               <p className="md:text-[15px] text-sm ">
-                {`${metaData.description} ${paramsvalue}`}
+                {`${metaData.description} ${paramsValue}`}
               </p>
             </div>
           </div>

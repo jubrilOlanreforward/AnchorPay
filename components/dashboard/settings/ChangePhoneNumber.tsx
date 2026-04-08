@@ -32,7 +32,9 @@ const ChangePhoneNumber = () => {
   });
 
   const onSubmit = async (data: changePhoneNumberFormValues) => {
-    router.push(`/dashboard/settings/enter-phone-otp?param=${data.oldPhone}`);
+    router.push(
+      `/dashboard/settings/profile/enter-phone-otp?param=${data.oldPhone}`,
+    );
   };
 
   return (
