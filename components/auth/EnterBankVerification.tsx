@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import CustomFormField from "../ui/shared/InputField";
 import { FormFieldType } from "@/types/types";
 import CustomButton from "../ui/shared/CustomButton";
-import Link from "next/link";
 import TermsAndConditions from "./TermsAndConditions";
 
 const formSchema = z.object({

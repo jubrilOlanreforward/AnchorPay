@@ -40,7 +40,7 @@ const Button = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
         onClick={onPress}
         disabled={isLoading || props.disabled}
         className={cn(
-          "flex items-center rounded-[8px] gap-2 h-[45px] md:text-sm text-[12px] bg-primary_one_600",
+          "flex items-center rounded-[8px] gap-2 h-[45px] text-[12px] bg-primary_one_600",
           iconPosition === "right" && "flex-row-reverse",
           iconPosition === "center" && "justify-center",
           withSideIcon && "pl-4 border w-fit",
@@ -64,7 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
 
         {/* Title or children */}
         {title ? (
-          <span className={cn("font-medium text-base", textClassName)}>
+          <span className={cn("font-medium text-sm", textClassName)}>
             {title}
           </span>
         ) : (
