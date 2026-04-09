@@ -1,3 +1,4 @@
+type iconProps = {width?: number, height?: number, fill?: string, stroke?: string};
 const WithBvnIcon = () => (
   <svg
     width="50"
@@ -233,15 +234,16 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-const CloseIcon = () => (
+const CloseIcon = ({width, height, fill} : iconProps) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke={fill ??"currentColor"}
     strokeWidth="1.5"
     data-slot="icon"
     aria-hidden="true"
-    className="size-6"
+    width={width ?? '24'}
+    height={height ?? '24'}
   >
     <path
       d="M6 18 18 6M6 6l12 12"
