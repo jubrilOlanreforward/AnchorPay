@@ -11,7 +11,7 @@ interface LoanFormData {
   tenor?: number | null;
 }
 
-const ReviewLoanDetails = ({ onNext }: LoanStepComponentProps) => {
+const ReviewLoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
   const [formData, setFormData] = useState<LoanFormData>({});
 
   useEffect(() => {
@@ -151,7 +151,7 @@ const ReviewLoanDetails = ({ onNext }: LoanStepComponentProps) => {
       {/* Buttons */}
       <div className="flex gap-3">
         <button
-          onClick={() => window.history.back()}
+          onClick={() => onPrev?.()}
           className="flex-1 border border-gray-300 text-gray-700 rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors hover:bg-gray-50"
         >
           Back

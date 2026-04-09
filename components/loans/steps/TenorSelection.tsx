@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { LoanStepComponentProps, TENOR_OPTIONS } from "@/lib/constants/loanConstants";
 import { Check } from "lucide-react";
 
-const TenorSelection = ({ onNext }: LoanStepComponentProps) => {
+const TenorSelection = ({ onNext, onPrev }: LoanStepComponentProps) => {
   const [selectedTenor, setSelectedTenor] = useState<number | null>(null);
   const [error, setError] = useState("");
 
@@ -74,12 +74,7 @@ const TenorSelection = ({ onNext }: LoanStepComponentProps) => {
       {/* Buttons */}
       <div className="flex gap-3">
         <button
-          onClick={() => {
-            const formData = JSON.parse(localStorage.getItem("loanFormData") || "{}");
-            formData.tenor = null;
-            localStorage.setItem("loanFormData", JSON.stringify(formData));
-            window.history.back();
-          }}
+          onClick={() => onPrev?.()}
           className="flex-1 border border-gray-300 text-gray-700 rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors hover:bg-gray-50"
         >
           Back

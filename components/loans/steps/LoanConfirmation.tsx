@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
 import { LoanStepComponentProps } from "@/lib/constants/loanConstants";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface LoanFormData {
   loanAmount?: string;
   tenure?: number;
 }
 
-const LoanConfirmation = ({ onNext }: LoanStepComponentProps) => {
+const LoanConfirmation = ({ onClose }: LoanStepComponentProps) => {
+  const router = useRouter();
   const [formData, setFormData] = useState<LoanFormData>({});
   const [applicationId] = useState(
     `LN-${Date.now().toString().slice(-8).toUpperCase()}`
@@ -24,10 +26,11 @@ const LoanConfirmation = ({ onNext }: LoanStepComponentProps) => {
   }, []);
 
   const handleComplete = () => {
-    // Clear loan form data
     localStorage.removeItem("loanFormData");
-    // Redirect to loans page
-    window.location.href = "/dashboard/loans";
+    if (onClose) {
+      onClose();
+    }
+    router.push("/dashboard/loans");
   };
 
   return (

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { LoanStepComponentProps } from "@/lib/constants/loanConstants";
 import { Check } from "lucide-react";
 
-const AccountSelection = ({ onNext }: LoanStepComponentProps) => {
+const AccountSelection = ({ onNext, onPrev }: LoanStepComponentProps) => {
   const [selectedAccount, setSelectedAccount] = useState<"unionbank" | "other" | null>(null);
   const [error, setError] = useState("");
 
@@ -93,10 +93,7 @@ const AccountSelection = ({ onNext }: LoanStepComponentProps) => {
       <div className="flex gap-3">
         <button
           onClick={() => {
-            const formData = JSON.parse(localStorage.getItem("loanFormData") || "{}");
-            formData.accountType = null;
-            localStorage.setItem("loanFormData", JSON.stringify(formData));
-            window.history.back();
+            onPrev?.();
           }}
           className="flex-1 border border-gray-300 text-gray-700 rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors hover:bg-gray-50"
         >

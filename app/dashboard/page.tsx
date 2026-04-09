@@ -4,6 +4,7 @@ import PromoCarousel from '@/components/dashboard/PromoCarousel';
 import EyeIcon from '@/components/SVGs/eyeIcon';
 import HouseMoneyIcon from '@/components/SVGs/houseMoneyIcon';
 import DoubleArrowIcon from '@/components/SVGs/doubleArrowUp';
+import { ApplyLoanModal } from '@/components/loans/apply-loan-modal';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import AddBvnIcon from '@/components/SVGs/addBvn';
@@ -56,10 +57,12 @@ export default function Dashboard() {
 
                         {/* Apply For Loan Box */}
                         <div className='bg-[#F7F8F9] w-full rounded-3xl flex items-center justify-center h-full border border-gray-100'>
-                            <Link href="/dashboard/loans" className='bg-[#1F7AEA] hover:bg-[#1860bb] text-white rounded-full flex items-center justify-center gap-2 px-6 py-3 shadow-md transition-all hover:scale-105'>
-                                <span className="text-[18px] leading-none mb-0.5">+</span>
-                                <span className="font-semibold text-[14px]">Apply for a loan</span>
-                            </Link>
+                            <ApplyLoanModal>
+                                <button className='bg-[#1F7AEA] hover:bg-[#1860bb] text-white rounded-full flex items-center justify-center gap-2 px-6 py-3 shadow-md transition-all hover:scale-105'>
+                                    <span className="text-[18px] leading-none mb-0.5">+</span>
+                                    <span className="font-semibold text-[14px]">Apply for a loan</span>
+                                </button>
+                            </ApplyLoanModal>
                         </div>
                     </div>
 

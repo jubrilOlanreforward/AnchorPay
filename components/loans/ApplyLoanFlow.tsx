@@ -114,14 +114,14 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
     const contentElement = (
         <>
             {/* Header with progress indicator */}
-            <div className="mb-8">
-                <div className="flex justify-between items-start mb-4">
-                <div>
-                <h1 className="font-semibold text-[22px] text-heading">{currentStep.title}</h1>
-                {currentStep.subTitle && (
-                    <p className="text-gray-500 text-[14px] mt-1">{currentStep.subTitle}</p>
-                )}
-                </div>
+            <div className="mb-6">
+                <div className="flex justify-between items-start mb-3">
+                    <div>
+                        <h1 className="font-semibold text-[22px] text-heading">{currentStep.title}</h1>
+                        {currentStep.subTitle && (
+                            <p className="text-gray-500 text-[14px] mt-1">{currentStep.subTitle}</p>
+                        )}
+                    </div>
 
                     {/* Close button for modal */}
                     {isModal && (
@@ -134,10 +134,25 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
                     )}
                 </div>
 
+                {/* Progress dots */}
+                <div className="flex gap-1.5 mt-4">
+                    {LOAN_STEPS.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`h-1 rounded-full transition-all duration-300 ${
+                                i === currentStepIndex
+                                    ? 'bg-primary_one_600 w-6'
+                                    : i < currentStepIndex
+                                    ? 'bg-primary_one_600/40 w-3'
+                                    : 'bg-gray-200 w-3'
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Step Content */}
-            <CurrentComponent onNext={handleNext} />
+            <CurrentComponent onNext={handleNext} onPrev={handlePrev} onClose={onClose} />
         </>
     );
 

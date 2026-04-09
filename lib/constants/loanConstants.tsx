@@ -4,6 +4,8 @@ import { ComponentType } from "react";
 
 export interface LoanStepComponentProps {
   onNext?: () => void;
+  onPrev?: () => void;
+  onClose?: () => void;
   formData?: LoanApplicationData;
 }
 
