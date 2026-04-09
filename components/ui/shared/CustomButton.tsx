@@ -32,47 +32,54 @@ const Button = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <ShadcnButton
         ref={ref}
-        onClick={onPress}
+        type={props.type || "button"}
+        onClick={(e) => {
+          if (isLoading) return;
+          props.onClick?.(e);
+          onPress?.();
+        }}
         disabled={isLoading || props.disabled}
+        aria-busy={isLoading}
+        aria-disabled={isLoading || props.disabled}
         className={cn(
-          "flex items-center rounded-[8px] gap-2 h-[45px] text-[12px] bg-primary_one_600",
+          "group flex items-center justify-center gap-2 h-[45px] text-[12px] rounded-[8px] bg-primary_one_600",
           iconPosition === "right" && "flex-row-reverse",
           iconPosition === "center" && "justify-center",
-          withSideIcon && "pl-4 border w-fit",
+          withSideIcon && "pl-4 border border-gray-200",
           className,
         )}
         {...props}
       >
-        {/* Left side icon (optional) */}
+        {/* Side Icon */}
         {withSideIcon && (
-          <span className="transition-transform group-hover:scale-110 group-hover:rotate-6">
+          <span className='transition-transform group-hover:scale-110 group-hover:rotate-6'>
             {sideIcon}
           </span>
         )}
 
-        {/* Loader or icon */}
-        {isLoading ? (
-          <span className="w-5 h-5 border-2 border-white/30 border-t-black rounded-full animate-spin" />
-        ) : (
-          showIcon && icon
-        )}
+        {/* Icon / Loader */}
+        <span className='flex items-center justify-center w-5 h-5'>
+          {isLoading ? (
+            <span className='w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin' />
+          ) : (
+            showIcon && icon
+          )}
+        </span>
 
-        {/* Title or children */}
+        {/* Text */}
         {title ? (
-          <span className={cn("font-medium text-sm", textClassName)}>
-            {title}
-          </span>
+          <span className={cn("font-medium text-sm", textClassName)}>{title}</span>
         ) : (
           children
         )}
       </ShadcnButton>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";
