@@ -54,7 +54,7 @@ export const BusinessNeeds = () => {
 
   return (
     <section className='bg-primary_one_600'>
-      <div className='max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-3 p-2 md:p-14'>
+      <div className='max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-3 p-2 md:p-14 mx-auto'>
         <div className='flex item-center'>
           <h1 className='text-white text-2xl md:text-[52px] font-montserrat font-bold p-6'>
             Let’s take care of <br /> your personal &<br /> business needs

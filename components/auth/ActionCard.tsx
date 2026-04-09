@@ -21,7 +21,7 @@ const ActionCard: React.FC<ActionCardProps> = ({
     >
       <div className="mb-5">{icon}</div>
       <h3 className="font-[600] text-[16px]">{title}</h3>
-      <p className="font-[400] text-[13px] tracking-[-0.1%] text-gray_400">
+      <p className="font-[400] text-[14px] tracking-[-0.1%] text-gray_400">
         {description}
       </p>
     </button>

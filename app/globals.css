@@ -46,6 +46,7 @@
   --color-card: var(--card);
   --color-primary_one_600: #1f7aea;
   --color-light-primary: #ecf4fd;
+  --color-tab-icon-bg:#ecf4fd;
   --color-input_border: #f1f1f1;
   --color-input_bg: #fafafa;
   --color-ghostwhite: ghostwhite;
@@ -57,6 +58,13 @@
   --color-muted-cta: #596574;
   --color-disabled-label: #9e9e9e;
   --color-disabled-bg: #f0f0f0;
+  --color-border-light: #e5e7eb;
+  --color-hover-light: #eff6ff;
+  --color-tab-bg: #fafafa;
+  --color-tab-chevron-inactive: #dddfe4;
+  --color-tab-chevron-active: #efeff1;
+  --color-logout-bg: #feedec;
+  --color-red-light: #fca5a5;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -140,6 +148,25 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Custom utility classes for CSS variables */
+@layer utilities {
+  .text-secondary {
+    @apply text-[color:var(--color-text-secondary)];
+  }
+
+  .text-gray-950 {
+    @apply text-[color:var(--color-gray_950)];
+  }
+
+  .text-chevron-inactive {
+    @apply text-[color:var(--color-tab-chevron-inactive)];
+  }
+
+  .bg-primary-one-600 {
+    @apply bg-[color:var(--color-primary_one_600)];
+  }
 }
 
 [data-input-otp="true"] {
