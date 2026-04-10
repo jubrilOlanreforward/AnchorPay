@@ -64,7 +64,7 @@
   --color-tab-chevron-inactive: #dddfe4;
   --color-tab-chevron-active: #efeff1;
   --color-logout-bg: #feedec;
-  --color-red-light: #fca5a5;
+  --color-red-light: #FDDDDC;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);

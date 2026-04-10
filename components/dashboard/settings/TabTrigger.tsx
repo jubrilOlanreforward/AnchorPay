@@ -28,11 +28,11 @@ const TabTrigger: React.FC<TabTriggerProps> = ({
     >
       <div
         className={cn(
-          " px-2 flex items-center  pr-3",
+          " px-2 flex items-center  pr-3 w-full",
           isActive && "border-l-4 border-[var(--color-primary_one_600)]",
         )}
       >
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-3 items-center w-full">
           <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[var(--color-tab-icon-bg)]">
             <IconComponent />
           </div>

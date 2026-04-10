@@ -31,8 +31,8 @@ export default function SettingsLayout({
 
   return (
     <div className="max-w-[950px] md:mt-[3rem] mt-[1rem] me-auto w-full flex md:flex-row flex-col md:gap-[34px] gap-[20px] md:px-6 px-4">
-      <aside className="md:w-[400px] w-full bg-white flex flex-col md:gap-10 gap-5 h-fit rounded-[14px] sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 md:min-w-[280px]">
-        <h1 className="font-montserrat md:text-[22px] text-[20px] font-[700] text-neutral-950">
+      <aside className="md:w-[400px] w-full bg-white flex flex-col md:gap-7 gap-3 h-fit rounded-[14px] sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 md:min-w-[280px]">
+        <h1 className="font-montserrat md:text-[20px] text-[18px] font-[700] text-neutral-950">
           Settings
         </h1>
         <nav className="flex flex-col gap-4">
@@ -64,11 +64,11 @@ export default function SettingsLayout({
             </button>
 
             <div>
-              <h2 className="font-montserrat md:text-[20px] text-[18px] font-[600] text-neutral-950 mb-2">
+              <h2 className="font-montserrat text-[17px] font-[600] text-neutral-950 mb-2">
                 {metaData.title}
               </h2>
-              <p className="md:text-[15px] text-sm ">
-                {`${metaData.description} ${paramsValue}`}
+              <p className="text-sm ">
+                {`${metaData.description} ${paramsValue??''}`}
               </p>
             </div>
           </div>

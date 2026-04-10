@@ -28,10 +28,10 @@ const ProfileComponent = () => {
             </button>
           </div>
           <div>
-            <h2 className="font-montserrat md:text-[22px] text-[20px] font-[600] text-neutral-950 md:mb-2 mb-0">
+            <h2 className="font-montserrat text-[17px] font-[600] text-neutral-950 md:mb-1 mb-0">
               Profile
             </h2>
-            <p className="md:text-[15px] text-[14px]">
+            <p className="text-[14px]">
               Access your profile details
             </p>
           </div>

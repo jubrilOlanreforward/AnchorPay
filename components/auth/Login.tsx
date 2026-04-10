@@ -31,8 +31,8 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="font-montserrat text-[24px] font-[600] mb-3">Welcome !</h1>
-      <p className="text-[17px] text-gray-950 mb-6">{`Let’s log in to your account`}</p>
+      <h1 className="font-montserrat text-[20px] font-[600] mb-3">Welcome !</h1>
+      <p className="text-[15px] text-gray-950 mb-6">{`Let’s log in to your account`}</p>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <CustomFormField

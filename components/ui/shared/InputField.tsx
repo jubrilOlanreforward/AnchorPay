@@ -76,7 +76,7 @@ const InputWrapper = ({
 }) => (
   <div
     className={cn(
-      "input-wrapper bg-gray-50 border border-[#F1F1F1] text-[#616161] px-4 rounded-[8px] h-[48px] overflow-hidden flex items-center gap-x-4 focus-within:border-primary transition-colors duration-200",
+      "input-wrapper bg-gray-50 border border-[#F1F1F1] text-[#616161] px-4 rounded-[8px] h-[45px] overflow-hidden flex items-center gap-x-4 focus-within:border-primary transition-colors duration-200",
       className,
     )}
   >
@@ -299,7 +299,7 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
           <Field className={className}>
             {label && (
               <FieldLabel>
-                <span className="field-label text-sm capitalize font-[500]">
+                <span className="field-label text-[13px] capitalize font-[500]">
                   {label}
                 </span>
               </FieldLabel>
@@ -324,7 +324,7 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
     <Field className={className}>
       {label && (
         <FieldLabel>
-          <span className="text-sm md:text-base capitalize font-[500] text-[var(--color-heading)] dark:text-white">
+          <span className="text-[13px] capitalize font-[500] text-[var(--color-heading)] dark:text-white">
             {label}
           </span>
         </FieldLabel>

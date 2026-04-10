@@ -44,12 +44,12 @@ export const SETTINGS_SECTIONS: SettingsSection[] = [
 export const SETTINGS_METADATA: SettingsMetadata[] = [
   {
     title: "Change Email",
-    description: "Update your email address",
+    description: "Change your email address",
     route: "/dashboard/settings/profile/change-email",
   },
   {
     title: "Change Phone Number",
-    description: "Update your phone number",
+    description: "Change your phone number",
     route: "/dashboard/settings/profile/change-phone",
   },
   {
