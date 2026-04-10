@@ -52,18 +52,18 @@ export default function SettingsLayout({
             {metaData.showBackButton && (
               <button
                 onClick={handleNavigateBack}
-                className='inline-flex items-center gap-2 mb-6 px-3 py-2 rounded-full bg-neutral-50 hover:bg-neutral-200-colors duration-200'
+                className='inline-flex items-center gap-2 cursor-pointer mb-6 px-3 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200-colors duration-200'
               >
-                <ArrowLeft className='w-4 h-4' />
+                <ArrowLeft className='w-4 h-4 bg-neutral-200 p-0.5 rounded-full' />
                 <span className='text-sm font-medium'>Back</span>
               </button>
             )}
 
             <div>
-              <h2 className='font-montserrat md:text-[20px] text-[18px] font-[600] text-neutral-950 mb-2'>
+              <h2 className='font-montserrat md:text-2xl text-[18px] font-bold text-neutral-950 mb-2'>
                 {metaData.title}
               </h2>
-              <p className='md:text-[15px] text-sm'>
+              <p className='md:text-base text-sm font-poppins max-w-[375px]'>
                 {metaData.description}
                 {paramsvalue && ` ${paramsvalue}`}
               </p>
