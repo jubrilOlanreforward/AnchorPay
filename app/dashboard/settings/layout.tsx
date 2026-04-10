@@ -32,9 +32,6 @@ export default function SettingsLayout({
   return (
     <div className="max-w-[950px] md:mt-[3rem] mt-[1rem] me-auto w-full flex md:flex-row flex-col md:gap-[34px] gap-[20px] md:px-6 px-4">
       <aside className="md:w-[400px] w-full bg-white flex flex-col md:gap-7 gap-3 h-fit rounded-[14px] sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 md:min-w-[280px]">
-        <h1 className="font-montserrat md:text-[20px] text-[18px] font-[700] text-neutral-950">
-          Settings
-        </h1>
         <nav className="flex flex-col gap-4">
           {SETTINGS_SECTIONS.map((section) => (
             <TabTrigger
@@ -49,26 +46,25 @@ export default function SettingsLayout({
         <LogoutTrigger />
       </aside>
 
-      <main
-        key={pathname}
-        className="bg-white md:w-[500px] w-full rounded-[14px] h-fit sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 flex-1"
-      >
+      <main className="bg-white md:w-[500px] w-full rounded-[14px] h-fit sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 flex-1">
         {metaData && (
           <div className="mb-8">
-            <button
-              onClick={handleNavigateBack}
-              className="inline-flex items-center gap-2 mb-6 px-3 py-2 rounded-full bg-neutral-50 hover:bg-neutral-200 text-neutral-700 transition-colors duration-200"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-medium">Back</span>
-            </button>
+            {metaData.showBackButton && (
+              <button
+                onClick={handleNavigateBack}
+                className="inline-flex items-center gap-2 cursor-pointer mb-6 px-3 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4 bg-neutral-200 p-0.5 rounded-full" />
+                <span className="text-sm font-medium">Back</span>
+              </button>
+            )}
 
             <div>
               <h2 className="font-montserrat text-[17px] font-[600] text-neutral-950 mb-2">
                 {metaData.title}
               </h2>
               <p className="text-sm ">
-                {`${metaData.description} ${paramsValue??''}`}
+                {`${metaData.description} ${paramsValue ?? ""}`}
               </p>
             </div>
           </div>

@@ -97,25 +97,25 @@ export default function Sidebar() {
         {/* SETTINGS */}
         <li
           className={`group cursor-pointer w-full h-[48px] rounded-lg flex items-center relative transition-all ${
-            isActive("/dashboard/settings")
+            isActive("/dashboard/settings/profile")
               ? "bg-white text-[#1F7AEA] shadow-sm"
               : "text-white hover:bg-white/10 hover:text-white"
           }`}
         >
-          {isActive("/dashboard/settings") && (
+          {isActive("/dashboard/settings/profile") && (
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#FFAE43] rounded-r-md"></div>
           )}
           <Link
-            href="/dashboard/settings"
+            href="/dashboard/settings/profile"
             className="flex items-center gap-[14px] w-full px-4"
           >
             <span
-              className={isActive("/dashboard/settings") ? "hidden" : "block"}
+              className={isActive("/dashboard/settings/profile") ? "hidden" : "block"}
             >
               <SettingsIcon fill="#ffffff" />
             </span>
             <span
-              className={isActive("/dashboard/settings") ? "block" : "hidden"}
+              className={isActive("/dashboard/settings/profile") ? "block" : "hidden"}
             >
               <SettingsIcon fill="#1F7AEA" />
             </span>

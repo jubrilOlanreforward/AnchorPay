@@ -53,12 +53,8 @@ interface CustomProps<T extends FieldValues> {
   step?: number;
   // For uncontrolled components
   value?: string;
-  onChange?: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  onKeyPress?: (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onBlur?: () => void;
 }
 
@@ -67,13 +63,7 @@ interface RenderFieldProps<T extends FieldValues> {
   props: CustomProps<T>;
 }
 
-const InputWrapper = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: ReactNode;
-}) => (
+const InputWrapper = ({ className, children }: { className?: string; children: ReactNode }) => (
   <div
     className={cn(
       "input-wrapper bg-gray-50 border border-[#F1F1F1] text-[#616161] px-4 rounded-[8px] h-[45px] overflow-hidden flex items-center gap-x-4 focus-within:border-primary transition-colors duration-200",
@@ -84,10 +74,7 @@ const InputWrapper = ({
   </div>
 );
 
-const RenderField = <T extends FieldValues>({
-  field,
-  props,
-}: RenderFieldProps<T>) => {
+const RenderField = <T extends FieldValues>({ field, props }: RenderFieldProps<T>) => {
   const {
     fieldType,
     disabled,
@@ -130,6 +117,12 @@ const RenderField = <T extends FieldValues>({
       return {
         ...field,
         ...commonProps,
+        onChange: externalOnChange
+          ? (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+              field.onChange(event);
+              externalOnChange(event);
+            }
+          : field.onChange,
       };
     }
 
@@ -155,7 +148,7 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.INPUT:
       return (
         <InputWrapper className={className}>
-          <input {...getInputProps()} type="text" />
+          <input {...getInputProps()} type='text' />
           {renderIcon()}
         </InputWrapper>
       );
@@ -163,7 +156,7 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.EMAIL:
       return (
         <InputWrapper className={className}>
-          <input type="email" {...getInputProps()} />
+          <input type='email' {...getInputProps()} />
           {renderIcon()}
         </InputWrapper>
       );
@@ -171,19 +164,12 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.PASSWORD:
       return (
         <InputWrapper className={className}>
-          <input
-            type={isPasswordVisible ? "text" : "password"}
-            {...getInputProps()}
-          />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="focus:outline-none"
-          >
+          <input type={isPasswordVisible ? "text" : "password"} {...getInputProps()} />
+          <button type='button' onClick={togglePasswordVisibility} className='focus:outline-none'>
             {isPasswordVisible ? (
-              <Eye className="text-[var(--color-placeholder)]" size={20} />
+              <Eye className='text-[var(--color-placeholder)]' size={20} />
             ) : (
-              <EyeOff className="text-[var(--color-placeholder)]" size={20} />
+              <EyeOff className='text-[var(--color-placeholder)]' size={20} />
             )}
           </button>
         </InputWrapper>
@@ -192,20 +178,14 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.PHONE_INPUT:
       return (
         <InputWrapper className={className}>
-          <input type="tel" {...getInputProps()} />
+          <input type='tel' {...getInputProps()} />
         </InputWrapper>
       );
 
     case FormFieldType.NUMBER:
       return (
         <InputWrapper className={className}>
-          <input
-            type="number"
-            min={min}
-            max={max}
-            step={step}
-            {...getInputProps()}
-          />
+          <input type='number' min={min} max={max} step={step} {...getInputProps()} />
           {renderIcon()}
         </InputWrapper>
       );
@@ -213,7 +193,7 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.DATE:
       return (
         <InputWrapper className={className}>
-          <input type="date" {...getInputProps()} />
+          <input type='date' {...getInputProps()} />
           {renderIcon()}
         </InputWrapper>
       );
@@ -225,22 +205,14 @@ const RenderField = <T extends FieldValues>({
       return (
         <InputWrapper className={className}>
           {field ? (
-            <Select
-              onValueChange={field.onChange}
-              value={field.value || ""}
-              disabled={disabled}
-            >
-              <SelectTrigger className="w-full border-none bg-none h-12 p-0 dark:border-neutral-800 rounded-lg text-left dark:bg-transparent focus:ring-0 focus:ring-none">
-                <SelectValue
-                  placeholder={placeholder || "Select an option..."}
-                />
+            <Select onValueChange={field.onChange} value={field.value || ""} disabled={disabled}>
+              <SelectTrigger className='w-full border-none bg-none h-12 p-0 dark:border-neutral-800 rounded-lg text-left dark:bg-transparent focus:ring-0 focus:ring-none'>
+                <SelectValue placeholder={placeholder || "Select an option..."} />
               </SelectTrigger>
               <SelectContent>
                 {options?.map((option) => {
-                  const value =
-                    typeof option === "string" ? option : option.value;
-                  const label =
-                    typeof option === "string" ? option : option.label;
+                  const value = typeof option === "string" ? option : option.value;
+                  const label = typeof option === "string" ? option : option.label;
                   return (
                     <SelectItem key={value} value={value}>
                       {label}
@@ -259,17 +231,13 @@ const RenderField = <T extends FieldValues>({
               value={externalValue || ""}
               disabled={disabled}
             >
-              <SelectTrigger className="w-full border-none bg-none h-12 p-0 dark:border-neutral-800 rounded-lg text-left dark:bg-transparent focus:ring-0 focus:ring-none">
-                <SelectValue
-                  placeholder={placeholder || "Select an option..."}
-                />
+              <SelectTrigger className='w-full text-[13px] border-none bg-none h-12 p-0 dark:border-neutral-800 rounded-lg text-left dark:bg-transparent focus:ring-0 focus:ring-none'>
+                <SelectValue placeholder={placeholder || "Select an option..."} />
               </SelectTrigger>
               <SelectContent>
                 {options?.map((option) => {
-                  const value =
-                    typeof option === "string" ? option : option.value;
-                  const label =
-                    typeof option === "string" ? option : option.label;
+                  const value = typeof option === "string" ? option : option.value;
+                  const label = typeof option === "string" ? option : option.label;
                   return (
                     <SelectItem key={value} value={value}>
                       {label}
@@ -299,19 +267,15 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
           <Field className={className}>
             {label && (
               <FieldLabel>
-                <span className="field-label text-[13px] capitalize font-[500]">
+                <span className="field-label text-[13px] capitalize font-[300]">
                   {label}
                 </span>
               </FieldLabel>
             )}
             <FieldContent>
               <RenderField field={field} props={props} />
-              {description && (
-                <FieldDescription>{description}</FieldDescription>
-              )}
-              {fieldState.error && (
-                <FieldError>{fieldState.error.message}</FieldError>
-              )}
+              {description && <FieldDescription>{description}</FieldDescription>}
+              {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
             </FieldContent>
           </Field>
         )}
@@ -324,7 +288,7 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
     <Field className={className}>
       {label && (
         <FieldLabel>
-          <span className="text-[13px] capitalize font-[500] text-[var(--color-heading)] dark:text-white">
+          <span className="text-[13px] capitalize font-[300] text-[var(--color-heading)] dark:text-white">
             {label}
           </span>
         </FieldLabel>
