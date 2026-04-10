@@ -82,4 +82,44 @@ export const SETTINGS_METADATA: SettingsMetadata[] = [
     pathname: "/dashboard/settings/verify-nin",
     showBackButton: true,
   },
+  {
+    title: "Cards & Account",
+    description: "Loan will be disbursed recoupment happens on the account you link",
+    pathname: "/dashboard/settings/cards-accounts",
+    showBackButton: false,
+  },
+  {
+    title: "Cards & Account",
+    description: "Loan will be disbursed recoupment happens on the account you link",
+    pathname: "/dashboard/settings/link-debit-card",
+    showBackButton: true,
+  },
+  {
+    title: "Link your debit card",
+    description:
+      "This will be the designated account for your loan disbursement and can also be used for repayments.",
+    pathname: "/dashboard/settings/cards-accounts/add-card",
+    showBackButton: true,
+  },
+  {
+    title: "We just sent you an OTP",
+    description:
+      "Enter the OTP sent to the phone number linked to your bank account 0814 *** *** **28",
+    pathname: "/dashboard/settings/cards-accounts/verify-card-otp",
+    showBackButton: true,
+  },
+  {
+    title: "We just sent you an OTP",
+    description:
+      "Enter the OTP sent to the phone number linked to your bank account 0814 *** *** **28",
+    pathname: "/dashboard/settings/cards-accounts/verify-bank-otp",
+    showBackButton: true,
+  },
+  {
+    title: "We just sent you an OTP",
+    description:
+      "This will be the designated account for your loan disbursement and can also be used for repayments.",
+    pathname: "/dashboard/settings/cards-accounts/verify-bank-otp",
+    showBackButton: true,
+  },
 ];
