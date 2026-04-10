@@ -1,39 +1,31 @@
 "useClient";
 import PageTransitionWrapper from "@/components/shared/PageTransitionWrapper";
 import AddBvnIcon from "@/components/SVGs/addBvn";
-import AddNinIcon from "@/components/SVGs/addNin";
-import AddAddressIcon from "@/components/SVGs/addAddress";
+import AddCardIcon from "@/components/SVGs/addCard";
 import KycField from "./KycField";
 
-const kycData = [
+const cardAccountData = [
   {
-    link: "/dashboard/settings/verify-bvn",
-    icon: <AddBvnIcon />,
-    label: "Done",
-    labelBg: "bg-[#2AA63C]",
-    title: "Add & Verify your BVN",
-  },
-  {
-    link: "/dashboard/settings/verify-nin",
-    icon: <AddNinIcon />,
-    label: "Done",
-    labelBg: "bg-[#2AA63C]",
-    title: "Add & Verify your NIN",
-  },
-  {
-    link: "/dashboard/settings/verify-address",
-    icon: <AddAddressIcon />,
+    link: "/dashboard/settings/cards-accounts/add-card",
+    icon: <AddCardIcon />,
     label: "Not Done",
     labelBg: "bg-[#FF9500]",
-    title: "Verify your Address",
+    title: "Link Your Debit Card",
+  },
+  {
+    link: "/dashboard/settings/cards-accounts/add-bank",
+    icon: <AddBvnIcon />,
+    label: "Not Done",
+    labelBg: "bg-[#FF9500]",
+    title: "Link Your Bank Account",
   },
 ];
 
-const KycVerification = () => {
+const CardAccount = () => {
   return (
     <PageTransitionWrapper>
       <div className='flex flex-col gap-2 flex-1 overflow-y-auto font-poppins'>
-        {kycData.map((item) => (
+        {cardAccountData.map((item) => (
           <KycField
             key={item.title}
             label={item.label}
@@ -48,4 +40,4 @@ const KycVerification = () => {
   );
 };
 
-export default KycVerification;
+export default CardAccount;

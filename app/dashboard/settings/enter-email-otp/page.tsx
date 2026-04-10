@@ -1,5 +1,5 @@
-import EnterOtp from "@/components/dashboard/settings/EnterEmailOtp";
+import EnterEmailOtp from "@/components/dashboard/settings/EnterEmailOtp";
 
-export default function EnterOtpPage() {
-  return <EnterOtp />;
+export default function EnterEmailOtpPage() {
+  return <EnterEmailOtp />;
 }
