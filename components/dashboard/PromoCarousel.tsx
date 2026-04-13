@@ -1,11 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import HouseMoneyIcon from '@/components/SVGs/houseMoneyIcon';
+import { HouseMoneyIcon, BooksIcon, CarImageIcon, RocketIcon } from '@/components/svg';
 import Link from 'next/link';
 import { ApplyLoanModal } from "@/components/loans/apply-loan-modal";
-import BooksIcon from '@/components/SVGs/books';
-import CarImageIcon from '@/components/SVGs/carImage';
-import RocketIcon from '@/components/SVGs/rocketIcon';
 
 const promos = [
     {
@@ -17,9 +14,8 @@ const promos = [
         btnClass: "bg-[#1F7AEA] hover:bg-[#1860bb] text-white",
         curveBg: "bg-white",
         IconComponent: () => (
-             <div className="scale-[1.2] mt-4">
-                 <HouseMoneyIcon />
-             </div>
+            <HouseMoneyIcon />
+
         )
     },
     {
@@ -31,9 +27,9 @@ const promos = [
         btnClass: "bg-white hover:bg-gray-100 text-[#1F7AEA]",
         curveBg: "bg-white",
         IconComponent: () => (
-             <div className="flex flex-col items-center mt-6 z-10 w-[240px]">
-                 <BooksIcon />
-             </div>
+            <div className="flex flex-col items-center mt-6 z-10 w-[240px]">
+                <BooksIcon />
+            </div>
         )
     },
     {
@@ -45,9 +41,9 @@ const promos = [
         btnClass: "bg-[#1F7AEA] hover:bg-[#1860bb] text-white",
         curveBg: "bg-white",
         IconComponent: () => (
-             <div className="flex flex-col items-center mt-6 z-10 w-[240px]">
-                 <CarImageIcon />
-             </div>
+            <div className="flex flex-col items-center mt-6 z-10 w-[240px]">
+                <CarImageIcon />
+            </div>
         )
     },
     {
@@ -59,9 +55,9 @@ const promos = [
         btnClass: "bg-white hover:bg-gray-100 text-[#1F7AEA]",
         curveBg: "bg-white",
         IconComponent: () => (
-             <div className="flex flex-col items-center mt-6 z-10 w-[220px]">
-                 <RocketIcon />
-             </div>
+            <div className="flex flex-col items-center mt-6 z-10 w-[220px]">
+                <RocketIcon />
+            </div>
         )
     }
 ];
@@ -81,7 +77,7 @@ export default function PromoCarousel() {
 
     return (
         <div className={`relative overflow-hidden h-[694px] rounded-[32px] p-8 flex flex-col items-center pt-16 text-center transition-colors duration-500 ${activePromo.bgClass}`}>
-            
+
             {/* Top Text Content */}
             <div className={`relative z-10 px-2 mt-4 flex flex-col items-center transition-opacity duration-300 ${activePromo.textClass}`}>
                 <h2 className="text-[26px] font-extrabold leading-tight tracking-tight whitespace-pre-line">
@@ -105,15 +101,15 @@ export default function PromoCarousel() {
             {/* Slider Dots aligned at the very bottom */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                 {promos.map((_, index) => (
-                    <button 
-                        key={index} 
+                    <button
+                        key={index}
                         onClick={() => setActiveIndex(index)}
                         className={`transition-all duration-300 rounded-full h-1.5 ${activeIndex === index ? (activePromo.textClass === 'text-white' ? "bg-white w-4" : "bg-[#1F7AEA] w-4") : (activePromo.textClass === 'text-white' ? "bg-white/40 w-1.5" : "bg-[#1F7AEA]/30 w-1.5")}`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
             </div>
-            
+
         </div>
     );
 }

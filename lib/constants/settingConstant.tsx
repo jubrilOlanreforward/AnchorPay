@@ -40,21 +40,21 @@ export const SETTINGS_METADATA: SettingsMetadata[] = [
   {
     title: "Change Email",
     description: "Update your email address",
-    pathname: "/dashboard/settings/change-email",
+    pathname: "/settings/change-email",
   },
   {
     title: "Change Phone Number",
     description: "Update your phone number",
-    pathname: "/dashboard/settings/change-phone",
+    pathname: "/settings/change-phone",
   },
   {
     title: "Enter OTP",
     description: "Enter the OTP sent to your old phone number",
-    pathname: "/dashboard/settings/enter-phone-otp",
+    pathname: "/settings/enter-phone-otp",
   },
   {
     title: "Enter OTP",
     description: "Enter the OTP sent to your old email address",
-    pathname: "/dashboard/settings/enter-email-otp",
+    pathname: "/settings/enter-email-otp",
   },
 ];

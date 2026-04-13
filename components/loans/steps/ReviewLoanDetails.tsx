@@ -3,12 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { LoanStepComponentProps, LOAN_REASONS, TENOR_OPTIONS } from "@/lib/constants/loanConstants";
 import { Edit2 } from "lucide-react";
+import { ActionButtons } from "../LoanUIComponents";
 
 interface LoanFormData {
+  loanType?: "union-kash" | "others" | null;
   loanAmount?: string;
   reasonForLoan?: string;
   accountType?: "unionbank" | "other" | null;
   tenor?: number | null;
+  selectedProvider?: string;
+  selectedOffer?: string;
 }
 
 const ReviewLoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
@@ -31,6 +35,17 @@ const ReviewLoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
 
   const getAccountType = (type: string) => {
     return type === "unionbank" ? "Union Bank" : "Other Banks";
+  };
+
+  const getProviderName = (id: string) => {
+    const { PROVIDER_OPTIONS } = require("@/lib/constants/loanConstants");
+    return PROVIDER_OPTIONS.find((p: any) => p.id === id)?.name || id;
+  };
+
+  const getOfferDetails = (id: string) => {
+    const { LOAN_OFFERS } = require("@/lib/constants/loanConstants");
+    const offer = LOAN_OFFERS.find((o: any) => o.id === id);
+    return offer ? `₦${offer.amount} (${offer.rate} Interest)` : id;
   };
 
   const handleNext = () => {
@@ -96,21 +111,59 @@ const ReviewLoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
           </p>
         </div>
 
-        {/* Tenor */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5">
-          <div className="flex justify-between items-start mb-3">
-            <p className="text-[13px] text-gray-500 font-medium">Repayment Tenor</p>
-            <button
-              onClick={() => handleEdit("tenor-selection")}
-              className="text-primary_one_600 hover:text-primary_one_700 transition-colors"
-            >
-              <Edit2 className="w-4 h-4" />
-            </button>
+        {/* Tenor (Only show if not 'others' flow, as tenure is part of the offer there) */}
+        {formData.loanType !== "others" && formData.tenor && (
+          <div className="bg-white border border-gray-200 rounded-2xl p-5">
+            <div className="flex justify-between items-start mb-3">
+              <p className="text-[13px] text-gray-500 font-medium">Repayment Tenor</p>
+              <button
+                onClick={() => handleEdit("tenor-selection")}
+                className="text-primary_one_600 hover:text-primary_one_700 transition-colors"
+              >
+                <Edit2 className="w-4 h-4" />
+              </button>
+            </div>
+            <p className="text-[15px] font-semibold text-[#344054]">
+              {getTenor(formData.tenor)}
+            </p>
           </div>
-          <p className="text-[15px] font-semibold text-[#344054]">
-            {getTenor(formData.tenor || 0)}
-          </p>
-        </div>
+        )}
+
+        {/* Selected Provider (Only show for 'others' flow) */}
+        {formData.loanType === "others" && formData.selectedProvider && (
+          <div className="bg-white border border-gray-200 rounded-2xl p-5">
+            <div className="flex justify-between items-start mb-3">
+              <p className="text-[13px] text-gray-500 font-medium">Loan Provider</p>
+              <button
+                onClick={() => handleEdit("provider-selection")}
+                className="text-primary_one_600 hover:text-primary_one_700 transition-colors"
+              >
+                <Edit2 className="w-4 h-4" />
+              </button>
+            </div>
+            <p className="text-[15px] font-semibold text-[#344054]">
+              {getProviderName(formData.selectedProvider)}
+            </p>
+          </div>
+        )}
+
+        {/* Selected Offer (Only show for 'others' flow) */}
+        {formData.loanType === "others" && formData.selectedOffer && (
+          <div className="bg-white border border-gray-200 rounded-2xl p-5">
+            <div className="flex justify-between items-start mb-3">
+              <p className="text-[13px] text-gray-500 font-medium">Selected offer</p>
+              <button
+                onClick={() => handleEdit("offer-selection")}
+                className="text-primary_one_600 hover:text-primary_one_700 transition-colors"
+              >
+                <Edit2 className="w-4 h-4" />
+              </button>
+            </div>
+            <p className="text-[15px] font-semibold text-[#344054]">
+              {getOfferDetails(formData.selectedOffer)}
+            </p>
+          </div>
+        )}
 
         {/* Summary Box */}
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-5 mt-6">
@@ -148,21 +201,11 @@ const ReviewLoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
         </label>
       </div>
 
-      {/* Buttons */}
-      <div className="flex gap-3">
-        <button
-          onClick={() => onPrev?.()}
-          className="flex-1 border border-gray-300 text-gray-700 rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors hover:bg-gray-50"
-        >
-          Back
-        </button>
-        <button
-          onClick={handleNext}
-          className="flex-1 bg-primary_one_600 hover:bg-primary_one_700 text-white rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors"
-        >
-          Confirm & Apply
-        </button>
-      </div>
+      <ActionButtons
+        onNext={handleNext}
+        onPrev={onPrev}
+        nextLabel="Confirm & Apply"
+      />
     </div>
   );
 };

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { LoanStepComponentProps, TENOR_OPTIONS } from "@/lib/constants/loanConstants";
+import { ActionButtons } from "../LoanUIComponents";
 import { Check } from "lucide-react";
 
 const TenorSelection = ({ onNext, onPrev }: LoanStepComponentProps) => {
@@ -25,13 +26,28 @@ const TenorSelection = ({ onNext, onPrev }: LoanStepComponentProps) => {
     onNext?.();
   };
 
+  const [amount] = useState(() => {
+    const data = JSON.parse(localStorage.getItem("loanFormData") || "{}");
+    return parseFloat(data.loanAmount?.replace(/,/g, "") || "0");
+  });
+
+  const calculateEstimate = (months: number) => {
+    if (!amount) return "0.00";
+    const interestRate = 0.05; // 5% example
+    const total = amount + amount * interestRate;
+    return (total / months).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
   return (
     <div className="w-full">
-      <p className="text-gray-600 text-[14px] mb-6">
+      <p className="text-gray-500 text-[14px] font-medium mb-6 leading-relaxed">
         Choose how long you want to repay your loan
       </p>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-2 gap-4">
         {TENOR_OPTIONS.map((option) => (
           <button
             key={option.value}
@@ -39,53 +55,44 @@ const TenorSelection = ({ onNext, onPrev }: LoanStepComponentProps) => {
               setSelectedTenor(option.value);
               setError("");
             }}
-            className={`p-5 rounded-2xl border-2 transition-all text-center ${
+            className={`p-5 rounded-2xl border-2 transition-all flex flex-col items-center justify-center gap-2 ${
               selectedTenor === option.value
-              ? "border-primary_one_600 bg-blue-50"
+                ? "border-primary_one_600 bg-blue-50 shadow-sm"
                 : "border-gray-200 bg-white hover:border-gray-300"
             }`}
           >
-            <div className="flex flex-col items-center gap-3">
-              <p className="font-semibold text-[16px] text-heading">{option.label}</p>
-              {selectedTenor === option.value && (
-                <div className="w-5 h-5 rounded-full bg-primary_one_600 flex items-center justify-center">
-                  <Check className="w-3.5 h-3.5 text-white" />
-                </div>
-              )}
-            </div>
+            <p className="font-bold text-[16px] text-[#344054]">{option.label}</p>
+            {selectedTenor === option.value ? (
+              <div className="w-5 h-5 rounded-full bg-primary_one_600 flex items-center justify-center">
+                <Check className="w-3.5 h-3.5 text-white" />
+              </div>
+            ) : (
+              <div className="w-5 h-5 rounded-full border-2 border-gray-200" />
+            )}
           </button>
         ))}
       </div>
 
-      {error && <p className="text-red-500 text-[13px] font-medium mb-4">{error}</p>}
+      {error && (
+        <p className="text-red-500 text-[13px] font-medium mt-4 bg-red-50 p-2 rounded-lg border border-red-100 italic">
+          {error}
+        </p>
+      )}
 
-      {/* Display estimated monthly amount */}
       {selectedTenor && (
-        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-8">
-          <p className="text-[13px] text-gray-600 mb-2">Estimated monthly payment</p>
-          <div className="flex items-baseline gap-2">
-            <p className="text-[24px] font-bold text-primary_one_600">₦</p>
-            <p className="text-[24px] font-bold text-primary_one_600">XX,XXX</p>
-            <p className="text-[13px] text-gray-500">per month</p>
+        <div className="bg-[#F9FAFB] border border-gray-100 rounded-2xl p-5 mt-6 flex flex-col gap-1">
+          <p className="text-[14px] text-gray-500 font-medium">Estimated monthly payment</p>
+          <div className="flex items-baseline gap-1.5">
+            <p className="text-[30px] font-bold text-primary_one_600">₦</p>
+            <p className="text-[30px] font-bold text-primary_one_600">
+              {calculateEstimate(selectedTenor)}
+            </p>
+            <p className="text-[14px] text-gray-400 font-medium ml-1">/ month</p>
           </div>
         </div>
       )}
 
-      {/* Buttons */}
-      <div className="flex gap-3">
-        <button
-          onClick={() => onPrev?.()}
-          className="flex-1 border border-gray-300 text-gray-700 rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors hover:bg-gray-50"
-        >
-          Back
-        </button>
-        <button
-          onClick={handleNext}
-          className="flex-1 bg-primary_one_600 hover:bg-primary_one_700 text-white rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors"
-        >
-          Continue
-        </button>
-      </div>
+      <ActionButtons onNext={handleNext} onPrev={onPrev} />
     </div>
   );
 };

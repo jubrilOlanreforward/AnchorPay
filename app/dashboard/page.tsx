@@ -1,17 +1,10 @@
 'use client';
 import React, { useState } from 'react'
 import PromoCarousel from '@/components/dashboard/PromoCarousel';
-import EyeIcon from '@/components/SVGs/eyeIcon';
-import HouseMoneyIcon from '@/components/SVGs/houseMoneyIcon';
-import DoubleArrowIcon from '@/components/SVGs/doubleArrowUp';
+import { EyeIcon, DoubleArrowIcon, AddBvnIcon, AddNinIcon, AddAddressIcon, AddCardIcon, ChevronIcon } from '@/components/svg';
 import { ApplyLoanModal } from '@/components/loans/apply-loan-modal';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import AddBvnIcon from '@/components/SVGs/addBvn';
-import AddNinIcon from '@/components/SVGs/addNin';
-import AddAddressIcon from '@/components/SVGs/addAddress';
-import AddCardIcon from '@/components/SVGs/addCard';
-import ChevronIcon from '@/components/SVGs/chevronDown';
 import Link from 'next/link';
 
 export default function Dashboard() {
