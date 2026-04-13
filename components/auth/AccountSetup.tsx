@@ -94,9 +94,11 @@ const AccountSetup = ({ flow }: { flow: FlowType }) => {
               ))}
             </div>
           </div>
-          <h1 className="font-montserrat md:text-[24px] text-[22px] font-[700] mb-3">
-            {currentStep.title}
-          </h1>
+          <div className="md:w-[80%] w-full">
+            <h1 className="font-montserrat md:text-[20px] text-[20px] font-[700] mb-3">
+              {currentStep.title}
+            </h1>
+          </div>
           <CurrentComponent onNext={handleNext} />
         </>
       )}

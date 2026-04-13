@@ -51,7 +51,7 @@ const SetupPassword = ({ onNext }: { onNext?: () => void }) => {
 
   return (
     <div>
-      <p className="text-[17px] text-gray-600 mb-7">
+      <p className="text-[15px] text-gray-600 mb-7">
         {`Begin your journey on Booster`}
       </p>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
