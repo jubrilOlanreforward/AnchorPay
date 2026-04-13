@@ -7,6 +7,7 @@ import CustomFormField from "../ui/shared/InputField";
 import { FormFieldType } from "@/types/types";
 import CustomButton from "../ui/shared/CustomButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -16,6 +17,7 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 const Login = () => {
+  const router = useRouter();
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -25,14 +27,13 @@ const Login = () => {
   });
 
   const onSubmit = async (data: LoginFormValues) => {
-    console.log("Login data:", data);
-    // Handle login
+    router.push("/dashboard");
   };
 
   return (
     <div>
-      <h1 className="font-montserrat text-[24px] font-[600] mb-3">Welcome !</h1>
-      <p className="text-[17px] text-gray-950 mb-6">{`Let’s log in to your account`}</p>
+      <h1 className="font-montserrat text-[20px] font-[600] mb-3">Welcome !</h1>
+      <p className="text-[15px] text-gray-950 mb-6">{`Let’s log in to your account`}</p>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <CustomFormField

@@ -37,10 +37,10 @@ const GetStarted = () => {
 
   return (
     <section>
-      <h1 className="font-montserrat text-[24px] font-[600] mb-3">
+      <h1 className="font-montserrat text-[20px] font-[600] mb-3">
         Get Started With Booster
       </h1>
-      <p className="font-[400] text-[17px] mb-8 tracking-[-0.15%] text-gray_950">
+      <p className="font-[400] text-[16px] mb-8 tracking-[-0.15%] text-gray_950">
         {`Select how you’d like to sign up`}
       </p>
 
@@ -56,7 +56,7 @@ const GetStarted = () => {
         ))}
       </div>
 
-      <p className="text-[17px] mb-5">
+      <p className="text-[15px] mb-5">
         Already have an account?{" "}
         <Link
           href="/auth/login"

@@ -21,7 +21,7 @@ const kycData = [
     title: "Add & Verify your NIN",
   },
   {
-    link: "/dashboard/settings/verify-address",
+    link: "/dashboard/settings/kyc-verification/set-address-details",
     icon: <AddAddressIcon />,
     label: "Not Done",
     labelBg: "bg-[#FF9500]",
@@ -32,7 +32,7 @@ const kycData = [
 const KycVerification = () => {
   return (
     <PageTransitionWrapper>
-      <div className='flex flex-col gap-2 flex-1 overflow-y-auto font-poppins'>
+      <div className="flex flex-col gap-2 flex-1 overflow-y-auto font-poppins">
         {kycData.map((item) => (
           <KycField
             key={item.title}

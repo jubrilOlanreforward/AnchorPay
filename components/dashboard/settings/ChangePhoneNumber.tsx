@@ -32,7 +32,9 @@ const ChangePhoneNumber = () => {
   });
 
   const onSubmit = async (data: changePhoneNumberFormValues) => {
-    router.push(`/dashboard/settings/enter-phone-otp?param=${data.oldPhone}`);
+    router.push(
+      `/dashboard/settings/profile/enter-phone-otp?param=${data.oldPhone}`,
+    );
   };
 
   return (
@@ -62,6 +64,7 @@ const ChangePhoneNumber = () => {
           title="No, Cancel"
           type="button"
           className="w-full bg-white text-black texy-[13px]"
+          onClick={() => router.back()}
         />
       </form>
     </PageTransitionWrapper>
