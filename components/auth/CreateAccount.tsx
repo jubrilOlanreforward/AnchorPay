@@ -36,7 +36,7 @@ const CreateAccount = ({ onNext }: { onNext?: () => void }) => {
 
   return (
     <div>
-      <p className="text-[17px] text-gray-600 mb-6">
+      <p className="text-[15px] text-gray-600 mb-6">
         {`Welcome to Booster! Let’s get you started.`}
       </p>
 

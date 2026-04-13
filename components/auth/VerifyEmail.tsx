@@ -64,7 +64,7 @@ const VerifyEmail = ({ onNext }: { onNext?: () => void }) => {
 
   return (
     <div>
-      <p className="text-[17px] text-gray-600 mb-6">
+      <p className="text-[14px] text-gray-600 mb-6">
         Please enter the OTP we just sent to sayomide@unionbankng.com
       </p>
 
