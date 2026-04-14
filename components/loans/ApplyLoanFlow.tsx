@@ -11,44 +11,29 @@ import ReviewLoanDetails from "./steps/ReviewLoanDetails";
 import LoanConfirmation from "./steps/LoanConfirmation";
 import { CustomModal } from "@/components/ui/shared/Modal";
 import { CloseIcon } from "../svg";
-const LOAN_STEPS: LoanStep[] = [
-    {
-        id: "loan-details",
-        slug: "loan-details",
-        title: "Apply for loan",
-        subTitle: "Put in how much loan you need",
-        component: LoanDetails,
-    },
-    {
-        id: "account-selection",
-        slug: "account-selection",
-        title: "Select Account",
-        component: AccountSelection,
-    },
-    {
-        id: "tenor-selection",
-        slug: "tenor-selection",
-        title: "Select Tenor",
-        component: TenorSelection,
-    },
-    {
-        id: "review-details",
-        slug: "review-details",
-        title: "Review Details",
-        component: ReviewLoanDetails,
-    },
-    {
-        id: "confirmation",
-        slug: "confirmation",
-        title: "Confirmation",
-        component: LoanConfirmation,
-    },
+import LoanTypeSelection from "./steps/LoanTypeSelection";
+import LoanOffersLoading from "./steps/LoanOffersLoading";
+import ProviderSelection from "./steps/ProviderSelection";
+import OfferSelection from "./steps/OfferSelection";
+const UNION_KASH_STEPS: LoanStep[] = [
+    { id: "loan-type", slug: "loan-type", title: "Apply for loan", component: LoanTypeSelection },
+    { id: "loan-details", slug: "loan-details", title: "Enter loan amount", subTitle: "Enter your Union bank account details", component: LoanDetails },
+    { id: "account-selection", slug: "account-selection", title: "Select Account", component: AccountSelection },
+    { id: "tenor-selection", slug: "tenor-selection", title: "Select Tenor", component: TenorSelection },
+    { id: "review-details", slug: "review-details", title: "Confirm details", component: ReviewLoanDetails },
+    { id: "confirmation", slug: "confirmation", title: "Confirmation", component: LoanConfirmation }
 ];
 
-type ApplyLoanFlowProps = {
-    isModal?: boolean;
-    onClose?: () => void;
-};
+const OTHERS_FLOW_STEPS: LoanStep[] = [
+    { id: "loan-type", slug: "loan-type", title: "Apply for loan", component: LoanTypeSelection },
+    { id: "loan-details", slug: "loan-details", title: "Enter loan amount", subTitle: "Enter your loan details", component: LoanDetails },
+    { id: "loading", slug: "loading", title: "Checking Offers", component: LoanOffersLoading },
+    { id: "provider-selection", slug: "provider-selection", title: "Available Providers", subTitle: "Select your preferred loan provider", component: ProviderSelection },
+    { id: "offer-selection", slug: "offer-selection", title: "Loan Offers", component: OfferSelection },
+    { id: "account-selection", slug: "account-selection", title: "Select Account", component: AccountSelection },
+    { id: "review-details", slug: "review-details", title: "Confirm details", component: ReviewLoanDetails },
+    { id: "confirmation", slug: "confirmation", title: "Confirmation", component: LoanConfirmation }
+];
 
 const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
     const router = useRouter();
@@ -56,37 +41,52 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
     const pathname = usePathname();
     const stepParam = searchParams.get("step");
 
-    // Initialize step index based on URL parameter
+    const [loanType, setLoanType] = useState<"union-kash" | "others" | null>(null);
+
+    useEffect(() => {
+        const savedData = JSON.parse(localStorage.getItem("loanFormData") || "{}");
+        if (savedData.loanType) {
+            setLoanType(savedData.loanType);
+        }
+    }, [stepParam]);
+
+    const activeSteps = loanType === "others" ? OTHERS_FLOW_STEPS : UNION_KASH_STEPS;
+
     const getInitialStepIndex = () => {
         if (!stepParam) return 0;
-        const stepIdx = LOAN_STEPS.findIndex((s) => s.slug === stepParam);
+        const stepIdx = activeSteps.findIndex((s) => s.slug === stepParam);
         return stepIdx >= 0 ? stepIdx : 0;
     };
 
     const [currentStepIndex, setCurrentStepIndex] = useState(getInitialStepIndex());
     const [isInitialized, setIsInitialized] = useState(false);
 
-    const currentStep = LOAN_STEPS[currentStepIndex];
+    const currentStep = activeSteps[currentStepIndex];
+    if (!currentStep) return null; // Safety check
+
     const CurrentComponent: ComponentType<LoanStepComponentProps> = currentStep.component;
 
     useEffect(() => {
         if (!stepParam) {
-            const baseStep = LOAN_STEPS[0]?.slug;
-            if (baseStep) {
-                router.replace(`${pathname}?step=${baseStep}`);
-            }
+            router.replace(`${pathname}?step=${activeSteps[0].slug}`);
         }
         setIsInitialized(true);
-    }, [stepParam, router, pathname]);
+    }, [stepParam, router, pathname, activeSteps]);
 
     const pushStepParam = (index: number) => {
-        const newSlug = LOAN_STEPS[index]?.slug;
+        const newSlug = activeSteps[index]?.slug;
         if (!newSlug || !pathname) return;
         router.replace(`${pathname}?step=${newSlug}`);
     };
 
     const handleNext = () => {
-        if (currentStepIndex < LOAN_STEPS.length - 1) {
+        // Refresh loanType if we just completed step 0
+        if (currentStepIndex === 0) {
+            const savedData = JSON.parse(localStorage.getItem("loanFormData") || "{}");
+            setLoanType(savedData.loanType);
+        }
+
+        if (currentStepIndex < activeSteps.length - 1) {
             const nextIndex = currentStepIndex + 1;
             setCurrentStepIndex(nextIndex);
             pushStepParam(nextIndex);
@@ -114,30 +114,45 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
     const contentElement = (
         <>
             {/* Header with progress indicator */}
-            <div className="mb-8">
-                <div className="flex justify-between items-start mb-4">
-                <div>
-                <h1 className="font-semibold text-[22px] text-heading">{currentStep.title}</h1>
-                {currentStep.subTitle && (
-                    <p className="text-gray-500 text-[14px] mt-1">{currentStep.subTitle}</p>
-                )}
-                </div>
+            <div className="mb-6">
+                <div className="flex justify-between items-start mb-3">
+                    <div>
+                        <h1 className="font-semibold text-[22px] text-heading">{currentStep.title}</h1>
+                        {currentStep.subTitle && (
+                            <p className="text-gray-500 text-[14px] mt-1">{currentStep.subTitle}</p>
+                        )}
+                    </div>
 
                     {/* Close button for modal */}
                     {isModal && (
                         <button
                             onClick={onClose}
-                            className="cursor-pointer bg-[#DAE9FC] p-1 rounded-full opacity-50 hover:opacity-100 transition-opacity"
+                            className="cursor-pointer bg-[#F2F4F7] p-1.5 rounded-full hover:bg-gray-200 transition-colors"
                         >
-                           <CloseIcon fill="#1F7AEA"/>
+                           <CloseIcon fill="#667085"/>
                         </button>
                     )}
                 </div>
 
+                {/* Progress bars */}
+                <div className="flex gap-1.5 mt-4">
+                    {activeSteps.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                                i === currentStepIndex
+                                    ? 'bg-primary_one_600 flex-1'
+                                    : i < currentStepIndex
+                                    ? 'bg-primary_one_600/30 flex-1'
+                                    : 'bg-gray-100 flex-1'
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Step Content */}
-            <CurrentComponent onNext={handleNext} />
+            <CurrentComponent onNext={handleNext} onPrev={handlePrev} onClose={onClose} />
         </>
     );
 

@@ -1,10 +1,9 @@
-"use client";
-
 import React, { useState } from "react";
 import { Info } from "lucide-react";
 import { LoanStepComponentProps, LOAN_REASONS } from "@/lib/constants/loanConstants";
+import { LoanInput, ActionButtons } from "../LoanUIComponents";
 
-const LoanDetails = ({ onNext }: LoanStepComponentProps) => {
+const LoanDetails = ({ onNext, onPrev }: LoanStepComponentProps) => {
   const [loanAmount, setLoanAmount] = useState("");
   const [reasonForLoan, setReasonForLoan] = useState("");
   const [errors, setErrors] = useState<{ amount?: string; reason?: string }>({});
@@ -54,41 +53,19 @@ const LoanDetails = ({ onNext }: LoanStepComponentProps) => {
 
   return (
     <div className="w-full">
-      <div className="grid gap-6 mb-8">
-        {/* Loan Amount */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="amount" className="font-semibold text-heading text-[15px]">
-            Loan Amount
-          </label>
-          <div className="relative">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 font-semibold text-[15px]">
-              ₦
-            </div>
-            <input
-              id="amount"
-              placeholder="500,000 - 5,000,000"
-              value={loanAmount}
-              onChange={handleAmountChange}
-              className={`w-full rounded-2xl h-13 pl-10 pr-4 shadow-sm border transition-colors outline-none text-[15px] placeholder:text-gray-400 ${
-                errors.amount
-                  ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-200"
-                  : "border-gray-200 focus:border-primary_one_600 focus:ring-1 focus:ring-primary_one_600 bg-[#fafafa]"
-              }`}
-            />
-            {!errors.amount && (
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                <Info className="w-4.5 h-4.5" />
-              </span>
-            )}
-          </div>
-          {errors.amount && (
-            <p className="text-red-500 text-[13px] font-medium">{errors.amount}</p>
-          )}
-        </div>
+      <div className="grid gap-6 mb-2">
+        <LoanInput
+          label="Loan Amount"
+          prefix="₦"
+          placeholder="500,000 - 5,000,000"
+          value={loanAmount}
+          onChange={handleAmountChange}
+          error={errors.amount}
+          icon={<Info className="w-4.5 h-4.5" />}
+        />
 
-        {/* Reason for Loan */}
-        <div className="flex flex-col gap-2">
-          <label htmlFor="reason" className="font-semibold text-heading text-[15px]">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="reason" className="font-semibold text-[#344054] text-[15px]">
             Reason for Loan
           </label>
           <div className="relative">
@@ -99,10 +76,10 @@ const LoanDetails = ({ onNext }: LoanStepComponentProps) => {
                 setReasonForLoan(e.target.value);
                 if (errors.reason) setErrors({ ...errors, reason: undefined });
               }}
-              className={`w-full rounded-2xl h-13 px-4 shadow-sm border transition-colors outline-none text-[15px] appearance-none ${
+              className={`w-full rounded-2xl h-[56px] px-4 shadow-sm border transition-all outline-none text-[16px] font-medium appearance-none ${
                 errors.reason
-                  ? "border-red-500 focus:border-red-600 focus:ring-1 focus:ring-red-200"
-                  : "border-gray-200 focus:border-primary_one_600 focus:ring-1 focus:ring-primary_one_600 bg-[#fafafa]"
+                  ? "border-red-500 bg-red-50 focus:border-red-600"
+                  : "border-gray-200 bg-[#FAFAFA] focus:border-primary_one_600 focus:bg-white"
               }`}
             >
               <option value="" hidden>
@@ -114,7 +91,6 @@ const LoanDetails = ({ onNext }: LoanStepComponentProps) => {
                 </option>
               ))}
             </select>
-            {/* Chevron icon */}
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
               <svg
                 className="fill-current h-4 w-4"
@@ -126,18 +102,12 @@ const LoanDetails = ({ onNext }: LoanStepComponentProps) => {
             </div>
           </div>
           {errors.reason && (
-            <p className="text-red-500 text-[13px] font-medium">{errors.reason}</p>
+            <p className="text-red-500 text-[13px] font-medium px-1">{errors.reason}</p>
           )}
         </div>
       </div>
 
-      {/* Next Button */}
-      <button
-        onClick={handleNext}
-        className="w-full bg-primary_one_600 hover:bg-primary_one_700 text-white rounded-full h-13 text-[15px] font-semibold shadow-sm transition-colors duration-200"
-      >
-        Continue
-      </button>
+      <ActionButtons onNext={handleNext} onPrev={onPrev} />
     </div>
   );
 };
