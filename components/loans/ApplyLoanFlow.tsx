@@ -15,8 +15,14 @@ import LoanTypeSelection from "./steps/LoanTypeSelection";
 import LoanOffersLoading from "./steps/LoanOffersLoading";
 import ProviderSelection from "./steps/ProviderSelection";
 import OfferSelection from "./steps/OfferSelection";
+
+interface ApplyLoanFlowProps {
+    isModal?: boolean;
+    onClose?: () => void;
+}
+
 const UNION_KASH_STEPS: LoanStep[] = [
-    { id: "loan-type", slug: "loan-type", title: "Apply for loan", component: LoanTypeSelection },
+    // { id: "loan-type", slug: "loan-type", title: "Apply for loan", component: LoanTypeSelection },
     { id: "loan-details", slug: "loan-details", title: "Enter loan amount", subTitle: "Enter your Union bank account details", component: LoanDetails },
     { id: "account-selection", slug: "account-selection", title: "Select Account", component: AccountSelection },
     { id: "tenor-selection", slug: "tenor-selection", title: "Select Tenor", component: TenorSelection },
@@ -25,12 +31,11 @@ const UNION_KASH_STEPS: LoanStep[] = [
 ];
 
 const OTHERS_FLOW_STEPS: LoanStep[] = [
-    { id: "loan-type", slug: "loan-type", title: "Apply for loan", component: LoanTypeSelection },
-    { id: "loan-details", slug: "loan-details", title: "Enter loan amount", subTitle: "Enter your loan details", component: LoanDetails },
-    { id: "loading", slug: "loading", title: "Checking Offers", component: LoanOffersLoading },
+    { id: "loan-details", slug: "loan-details", title: "Apply for loan", subTitle: "Put in how much loan you need", component: LoanDetails },
     { id: "provider-selection", slug: "provider-selection", title: "Available Providers", subTitle: "Select your preferred loan provider", component: ProviderSelection },
+    { id: "loading", slug: "loading", title: "Checking Offers", component: LoanOffersLoading },
     { id: "offer-selection", slug: "offer-selection", title: "Loan Offers", component: OfferSelection },
-    { id: "account-selection", slug: "account-selection", title: "Select Account", component: AccountSelection },
+    // { id: "account-selection", slug: "account-selection", title: "Select Account", component: AccountSelection },
     { id: "review-details", slug: "review-details", title: "Confirm details", component: ReviewLoanDetails },
     { id: "confirmation", slug: "confirmation", title: "Confirmation", component: LoanConfirmation }
 ];
@@ -50,8 +55,8 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
         }
     }, [stepParam]);
 
-    const activeSteps = loanType === "others" ? OTHERS_FLOW_STEPS : UNION_KASH_STEPS;
-
+    // const activeSteps = loanType === "others" ? OTHERS_FLOW_STEPS : UNION_KASH_STEPS;
+const activeSteps = OTHERS_FLOW_STEPS;
     const getInitialStepIndex = () => {
         if (!stepParam) return 0;
         const stepIdx = activeSteps.findIndex((s) => s.slug === stepParam);
@@ -129,25 +134,9 @@ const ApplyLoanFlow = ({ isModal = false, onClose }: ApplyLoanFlowProps) => {
                             onClick={onClose}
                             className="cursor-pointer bg-[#F2F4F7] p-1.5 rounded-full hover:bg-gray-200 transition-colors"
                         >
-                           <CloseIcon fill="#667085"/>
+                            <CloseIcon fill="#667085" />
                         </button>
                     )}
-                </div>
-
-                {/* Progress bars */}
-                <div className="flex gap-1.5 mt-4">
-                    {activeSteps.map((_, i) => (
-                        <div
-                            key={i}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                                i === currentStepIndex
-                                    ? 'bg-primary_one_600 flex-1'
-                                    : i < currentStepIndex
-                                    ? 'bg-primary_one_600/30 flex-1'
-                                    : 'bg-gray-100 flex-1'
-                            }`}
-                        />
-                    ))}
                 </div>
             </div>
 

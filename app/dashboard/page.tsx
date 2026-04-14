@@ -24,7 +24,14 @@ export default function Dashboard() {
                         {/* Loan Balance Card */}
                         <div className='w-full h-full flex flex-col justify-between rounded-3xl p-5 text-white shadow-sm relative overflow-hidden'
                             style={{
-                                background: 'linear-gradient(110deg, #4185fe 0%, #175ce0 100%)'
+                                background: `
+                                  linear-gradient(75deg, transparent 0%, transparent 20%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 21%, transparent 21%, transparent 100%),
+                                  linear-gradient(75deg, transparent 0%, transparent 35%, rgba(255,255,255,0.08) 35%, rgba(255,255,255,0.08) 36%, transparent 36%, transparent 100%),
+                                  linear-gradient(75deg, transparent 0%, transparent 50%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.06) 51%, transparent 51%, transparent 100%),
+                                  linear-gradient(110deg, #4185fe 0%, #175ce0 100%)`,
+                                backgroundSize: '100% 50%, 100% 50%, 100% 50%, 100% 100%',
+                                backgroundPosition: '0 0, 0 0, 0 0, 0 0',
+                                backgroundRepeat: 'no-repeat, no-repeat, no-repeat, no-repeat'
                             }}>
                             {/* Soft wavy overlay pattern */}
                             <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay" style={{ backgroundImage: "url('/images/wave.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
@@ -74,7 +81,7 @@ export default function Dashboard() {
                             </div>
                             <h4 className='text-[18px] font-bold text-[#181818]'>There are no transaction yet</h4>
                             <p className='text-[13px] text-gray-500 max-w-[280px] leading-relaxed mb-3'>You have no active loans on your account. Tap the button below to apply for a loan.</p>
-                            <Link href="/dashboard/loans" className='bg-[#1F7AEA] hover:bg-[#1860bb] text-white text-[13px] font-semibold px-6 py-2.5 rounded-full shadow-sm'>
+                            <Link href="/loans" className='bg-[#1F7AEA] hover:bg-[#1860bb] text-white text-[13px] font-semibold px-6 py-2.5 rounded-full shadow-sm'>
                                 Apply for a loan
                             </Link>
                         </div>

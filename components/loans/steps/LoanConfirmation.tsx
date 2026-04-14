@@ -30,7 +30,7 @@ const LoanConfirmation = ({ onClose }: LoanStepComponentProps) => {
     if (onClose) {
       onClose();
     }
-    router.push("/dashboard/loans");
+    router.push("/loans");
   };
 
   return (
