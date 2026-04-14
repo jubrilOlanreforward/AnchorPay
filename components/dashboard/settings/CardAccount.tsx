@@ -1,19 +1,18 @@
 "useClient";
 import PageTransitionWrapper from "@/components/shared/PageTransitionWrapper";
-import AddBvnIcon from "@/components/SVGs/addBvn";
-import AddCardIcon from "@/components/SVGs/addCard";
+import {AddBvnIcon, AddCardIcon} from "@/components/svg";
 import KycField from "./KycField";
 
 const cardAccountData = [
   {
-    link: "/dashboard/settings/cards-accounts/add-card",
+    link: "/settings/cards-accounts/add-card",
     icon: <AddCardIcon />,
     label: "Not Done",
     labelBg: "bg-[#FF9500]",
     title: "Link Your Debit Card",
   },
   {
-    link: "/dashboard/settings/cards-accounts/add-bank",
+    link: "/settings/cards-accounts/add-bank",
     icon: <AddBvnIcon />,
     label: "Not Done",
     labelBg: "bg-[#FF9500]",

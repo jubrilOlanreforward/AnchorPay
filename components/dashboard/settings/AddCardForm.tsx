@@ -89,7 +89,7 @@ const AddCardForm = () => {
     console.log("Card added:", data);
     // Here you would typically make an API call to save the card
     // After successful card addition, navigate to OTP verification
-    router.push("/dashboard/settings/cards-accounts/verify-card-otp");
+    router.push("/settings/cards-accounts/verify-card-otp");
   };
 
   return (
