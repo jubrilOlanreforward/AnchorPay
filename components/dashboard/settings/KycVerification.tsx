@@ -1,8 +1,6 @@
 "useClient";
 import PageTransitionWrapper from "@/components/shared/PageTransitionWrapper";
-import AddBvnIcon from "@/components/SVGs/addBvn";
-import AddNinIcon from "@/components/SVGs/addNin";
-import AddAddressIcon from "@/components/SVGs/addAddress";
+import { AddBvnIcon, AddNinIcon, AddAddressIcon } from "@/components/svg";
 import KycField from "./KycField";
 
 const kycData = [
@@ -32,7 +30,7 @@ const kycData = [
 const KycVerification = () => {
   return (
     <PageTransitionWrapper>
-      <div className="flex flex-col gap-2 flex-1 overflow-y-auto font-poppins">
+      <div className='flex flex-col gap-2 flex-1 overflow-y-auto font-poppins'>
         {kycData.map((item) => (
           <KycField
             key={item.title}

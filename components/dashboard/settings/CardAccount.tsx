@@ -1,7 +1,6 @@
 "useClient";
 import PageTransitionWrapper from "@/components/shared/PageTransitionWrapper";
-import AddBvnIcon from "@/components/SVGs/addBvn";
-import AddCardIcon from "@/components/SVGs/addCard";
+import { AddBvnIcon, AddCardIcon } from "@/components/svg";
 import KycField from "./KycField";
 
 const cardAccountData = [
