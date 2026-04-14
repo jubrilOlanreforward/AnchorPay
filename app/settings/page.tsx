@@ -3,5 +3,5 @@
 import ProfileComponent from "@/components/dashboard/settings/Profile";
 
 export default function SettingsPage() {
- return <ProfileComponent />;
+  return <ProfileComponent />;
 }

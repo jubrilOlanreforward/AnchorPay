@@ -2,9 +2,7 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import NotificationIcon from '@/components/SVGs/notificationIcon';
-import UserAvatarIcon from '@/components/SVGs/userAvatar';
-import ChevronIcon from '@/components/SVGs/chevronDown';
+import { NotificationIcon, UserAvatarIcon, ChevronIcon } from '@/components/svg';
 
 export default function DashboardHeader() {
     const pathname = usePathname();
