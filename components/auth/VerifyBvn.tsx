@@ -64,7 +64,7 @@ const VerifyBvn = ({ onNext }: { onNext?: () => void }) => {
 
   return (
     <div>
-      <p className="text-[17px] text-gray-950 mb-6">
+      <p className="text-[14px] text-gray-950 mb-6">
         Enter the OTP sent to the phone number and Email address associated with
         your BVN.
       </p>

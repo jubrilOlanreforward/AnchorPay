@@ -1,7 +1,7 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import ProfileComponent from "@/components/dashboard/settings/Profile";
 
 export default function SettingsPage() {
-  redirect("/settings/profile");
+  return <ProfileComponent />;
 }

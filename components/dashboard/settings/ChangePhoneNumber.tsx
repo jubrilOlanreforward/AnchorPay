@@ -62,6 +62,7 @@ const ChangePhoneNumber = () => {
           title="No, Cancel"
           type="button"
           className="w-full bg-white text-black texy-[13px]"
+          onClick={() => router.back()}
         />
       </form>
     </PageTransitionWrapper>

@@ -68,6 +68,7 @@ const ChangeEmail = () => {
         <CustomButton
           title="No, Cancel"
           type="button"
+          onClick={() => router.back()}
           className="w-full bg-white text-black texy-[13px]"
         />
       </form>

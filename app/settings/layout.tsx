@@ -21,7 +21,7 @@ export default function SettingsLayout({
 
   const paramsvalue = searchParams.get("param");
 
-  const metaData = SETTINGS_METADATA.find((meta) => meta.pathname === pathname);
+  const metaData = SETTINGS_METADATA.find((meta) => meta.route === pathname);
 
   const handleNavigateBack = () => {
     router.back();

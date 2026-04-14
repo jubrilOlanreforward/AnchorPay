@@ -9,9 +9,9 @@ export const Hero = () => {
   return (
     <section className='w-full relative min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center px-6  mt-12 overflow-hidden'>
       {/* Background Glow */}
-      <div className='overflow-hidden max-w-full w-full'>
+      <div className='overflow-hidden max-w-full w-full '>
         <div className='absolute left-[20%] w-full h-full bg-primary/40 z-1 blur-3xl rounded-full opacity-40 mt-40'></div>
-        <div className='max-w-7xl w-full mt-10  md:mt-4 grid md:grid-cols-2 gap-10 items-center relative z-3'>
+        <div className='max-w-7xl mx-auto w-full mt-10  md:mt-4 grid md:grid-cols-2 gap-10 items-center relative z-3'>
           {/* LEFT CONTENT */}
           <div className='flex flex-col items-start  ml-0 text-left  gap-[34px] md:ml-10 animate__animated animate__zoomIn'>
             <h1 className='text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-montserrat'>
