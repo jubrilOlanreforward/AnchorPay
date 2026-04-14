@@ -38,7 +38,7 @@ const SetNewPasswordComponent = () => {
 
   const onSubmit = async (data: changePasswordFormValues) => {
     router.push(
-      `/dashboard/settings/profile/enter-Password-otp?param=${data.newPassword}`,
+      `/settings/profile/enter-Password-otp?param=${data.newPassword}`,
     );
   };
 

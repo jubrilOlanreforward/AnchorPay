@@ -57,7 +57,7 @@ const VerifyBankOtp = () => {
   const handleSuccessModalClose = () => {
     setIsAlertOpen(false);
     // Navigate to the cards-accounts page or link-debit-card management page
-    router.push("/dashboard/settings/link-debit-card");
+    router.push("/settings/link-debit-card");
   };
 
   const otpBlock = useMemo(

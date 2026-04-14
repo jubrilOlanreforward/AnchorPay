@@ -52,7 +52,7 @@ const LinkBankCard = () => {
             onEdit={() => alert(`Edit clicked for ${item.title}`)}
           />
         ))}
-        <Link href='/dashboard/settings/cards-accounts/add-bank'>
+        <Link href='/settings/cards-accounts/add-bank'>
           <CustomButton title='Add Another Account' type='submit' className='w-full' />
         </Link>
       </div>

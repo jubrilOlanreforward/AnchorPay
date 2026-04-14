@@ -9,7 +9,6 @@ import {
 import TabTrigger from "@/components/dashboard/settings/TabTrigger";
 import LogoutTrigger from "@/components/dashboard/settings/Logout";
 import DashboardLayout from "../dashboard/layout";
-
 export default function SettingsLayout({
   children,
 }: Readonly<{
@@ -19,9 +18,12 @@ export default function SettingsLayout({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const paramsvalue = searchParams.get("param");
+  const paramsValue = searchParams.get("param");
 
   const metaData = SETTINGS_METADATA.find((meta) => meta.route === pathname);
+
+  const isActive = (route: string) =>
+    pathname === route 
 
   const handleNavigateBack = () => {
     router.back();
@@ -30,10 +32,7 @@ export default function SettingsLayout({
   return (
     <DashboardLayout>
       <div className="max-w-[950px] md:mt-[3rem] mt-[1rem] mx-auto w-full flex md:flex-row flex-col md:gap-[34px] gap-[20px] md:px-6 px-4">
-        <aside className="md:w-[400px] w-full bg-white flex flex-col md:gap-10 gap-5 h-fit rounded-[14px] sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 md:min-w-[280px]">
-          <h1 className="font-montserrat md:text-[22px] text-[20px] font-[700] text-neutral-950">
-            Settings
-          </h1>
+        <aside className="md:w-[400px] w-full bg-white flex flex-col md:gap-7 gap-3 h-fit rounded-[14px] sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 md:min-w-[280px]">
           <nav className="flex flex-col gap-4">
             {SETTINGS_SECTIONS.map((section) => (
               <TabTrigger
@@ -41,33 +40,32 @@ export default function SettingsLayout({
                 title={section.title ?? ""}
                 icon={section.icon}
                 route={section.route}
-                isActive={pathname?.includes(section.route) || false}
+                isActive={isActive(section.route)}
               />
             ))}
           </nav>
           <LogoutTrigger />
         </aside>
 
-        <main
-          key={pathname}
-          className="bg-white md:w-[500px] w-full rounded-[14px] h-fit sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 flex-1"
-        >
+        <main className="bg-white md:w-[500px] w-full rounded-[14px] h-fit sm:py-[34px] py-[25px] sm:px-[34px] px-[25px] border border-gray-200 flex-1">
           {metaData && (
             <div className="mb-8">
-              <button
-                onClick={handleNavigateBack}
-                className="inline-flex items-center gap-2 mb-6 px-3 py-2 rounded-full bg-neutral-50 hover:bg-neutral-200 text-neutral-700 transition-colors duration-200"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span className="text-sm font-medium">Back</span>
-              </button>
+              {metaData.showBackButton && (
+                <button
+                  onClick={handleNavigateBack}
+                  className="inline-flex items-center gap-2 cursor-pointer mb-6 px-3 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200-colors duration-200"
+                >
+                  <ArrowLeft className="w-4 h-4 bg-neutral-200 p-0.5 rounded-full" />
+                  <span className="text-sm font-medium">Back</span>
+                </button>
+              )}
 
               <div>
-                <h2 className="font-montserrat md:text-[20px] text-[18px] font-[600] text-neutral-950 mb-2">
+                <h2 className="font-montserrat text-[17px] font-[600] text-neutral-950 mb-2">
                   {metaData.title}
                 </h2>
-                <p className="md:text-[15px] text-sm ">
-                  {`${metaData.description} ${paramsvalue}`}
+                <p className="text-sm ">
+                  {`${metaData.description} ${paramsValue ?? ""}`}
                 </p>
               </div>
             </div>
@@ -75,8 +73,6 @@ export default function SettingsLayout({
           {children}
         </main>
       </div>
-
     </DashboardLayout>
-
   );
 }
