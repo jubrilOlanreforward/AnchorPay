@@ -8,7 +8,7 @@ export default function Sidebar() {
     const pathname = usePathname();
 
     const isActive = (path: string) => {
-        return pathname === path;
+        return pathname.includes(path) ;
     };
 
     return (

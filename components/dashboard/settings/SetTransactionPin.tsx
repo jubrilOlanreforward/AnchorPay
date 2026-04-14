@@ -38,7 +38,7 @@ const SetTransactionPinComponent = () => {
 
   const onSubmit = async (data: changePinFormValues) => {
     router.push(
-      `/dashboard/settings/profile/enter-Pin-otp?param=${data.newPin}`,
+      `/settings/profile/enter-Pin-otp?param=${data.newPin}`,
     );
   };
 
