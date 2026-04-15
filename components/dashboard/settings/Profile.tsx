@@ -45,12 +45,12 @@ const ProfileComponent = () => {
         <ProfileField
           label="Email Address"
           value={profileData.email}
-          linkHref={"/settings/change-email"}
+          linkHref={"/settings/profile/change-email"}
         />
         <ProfileField
           label="Phone Number"
           value={profileData.phone}
-          linkHref={"/settings/change-phone"}
+          linkHref={"/settings/profile/change-phone"}
         />
       </div>
     </PageTransitionWrapper>
