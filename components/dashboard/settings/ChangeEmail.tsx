@@ -35,7 +35,7 @@ const ChangeEmail = () => {
   });
 
   const onSubmit = async (data: changeEmailFormValues) => {
-    router.push(`/settings/enter-email-otp?param=${data.oldEmail}`);
+    router.push(`/settings/profile/enter-email-otp?param=${data.oldEmail}`);
   };
 
   return (
