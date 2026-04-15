@@ -34,7 +34,7 @@ const EnterAddressDetailsComponent = () => {
   const onSubmit = async (data: AddressDetailsFormValues) => {
     console.log("Address details submitted:", data);
     // TODO: call API then navigate
-    router.push("/dashboard/settings/kyc-verification/upload-proof-of-address");
+    router.push("/settings/kyc-verification/upload-proof-of-address");
   };
 
   return (

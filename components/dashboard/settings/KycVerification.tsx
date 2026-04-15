@@ -5,21 +5,21 @@ import KycField from "./KycField";
 
 const kycData = [
   {
-    link: "/dashboard/settings/verify-bvn",
+    link: "/settings/verify-bvn",
     icon: <AddBvnIcon />,
     label: "Done",
     labelBg: "bg-[#2AA63C]",
     title: "Add & Verify your BVN",
   },
   {
-    link: "/dashboard/settings/verify-nin",
+    link: "/settings/verify-nin",
     icon: <AddNinIcon />,
     label: "Done",
     labelBg: "bg-[#2AA63C]",
     title: "Add & Verify your NIN",
   },
   {
-    link: "/dashboard/settings/kyc-verification/set-address-details",
+    link: "/settings/kyc-verification/set-address-details",
     icon: <AddAddressIcon />,
     label: "Not Done",
     labelBg: "bg-[#FF9500]",

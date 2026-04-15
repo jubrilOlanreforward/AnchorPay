@@ -72,7 +72,7 @@ const AddBankForm = () => {
     console.log("Account added:", data);
     // Here you would typically make an API call to save the account
     // After successful account addition, navigate to OTP verification
-    router.push("/dashboard/settings/cards-accounts/verify-bank-otp");
+    router.push("/settings/cards-accounts/verify-bank-otp");
   };
 
   return (
